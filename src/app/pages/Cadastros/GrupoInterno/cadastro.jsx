@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Form } from 'react-bootstrap'
-import { object, string } from 'yup'
 import { useFormik, Formik } from 'formik'
+import { object, string, number, SchemaOf } from 'yup'
+import { Form } from 'react-bootstrap'
 
-const CadastroApresentacoes = (props) => {
+const CadastroGrupoFilial = (props) => {
   const { id } = props.match.params
   const isAddMode = !id
 
@@ -12,6 +12,12 @@ const CadastroApresentacoes = (props) => {
     descricao: '',
     registro: '',
     usuario: '',
+    responsavel: {
+      codigo: 0,
+      descricao: '',
+      registro: '',
+      usuario: '',
+    },
   })
 
   const { getFieldProps, isSubmitting, isValidating, errors, handleSubmit, setFieldValue } = useFormik({
@@ -21,6 +27,10 @@ const CadastroApresentacoes = (props) => {
         .min(2, 'Deve conter pelo menos 2 caracteres')
         .max(100)
         .required('O campo Descrição é obrigatório!'),
+      responsavel: object({
+        codigo: number().min(1, 'Por favor, selecione uma opção de responsável').nullable(),
+      }),
+      // departamento: object().,
     }),
     onSubmit: (values) =>
       //dispatchToTodos(todosActions.addTodo(values.title))
@@ -33,17 +43,31 @@ const CadastroApresentacoes = (props) => {
 
   const inputCodigo = useRef(null)
   const inputDescricao = useRef(null)
+  const inputResponsavel = useRef(null)
 
   useEffect(() => {
     if (!isAddMode) {
       // get user and set form fields
-      const data = { codigo: id, descricao: 'edit', registro: '', usuario: '' }
-      setFieldValue('codigo', data.codigo, false) //"codigo",data.codigo);
-      setFieldValue('descricao', data.descricao, false) //"codigo",data.codigo);
+      const dataSecao = {
+        codigo: id,
+        descricao: 'edit',
+        registro: '',
+        usuario: '',
+        responsavel: {
+          codigo: 25,
+          descricao: 'Descrição Responsável 95',
+          registro: '',
+          usuario: '',
+        },
+      }
+      setFieldValue('codigo', dataSecao.codigo, false) //"codigo",data.codigo);
+      setFieldValue('descricao', dataSecao.descricao, false) //"codigo",data.codigo);
+      setFieldValue('responsavel', dataSecao.responsavel.codigo, false) //"codigo",data.codigo);
       //formik.setFieldValue("descricao",data.descricao);
       //inputCodigo = data.codigo;
-      setInitialValues(data)
+      setInitialValues(dataSecao)
       //alert(JSON.stringify(data))
+      // console.log(data)
     }
   }, [id, isAddMode, setFieldValue])
 
@@ -51,8 +75,8 @@ const CadastroApresentacoes = (props) => {
     <div className="col-md-12 grid-margin stretch-card">
       <div className="card">
         <div className="card-body">
-          <h3 className="">Apresentação</h3>
-          <p className="card-description"> Cadastro de apresentação </p>
+          <h3 className="">Grupo Filial</h3>
+          <p className="card-description"> Cadastro de Grupo Filial </p>
           <form onSubmit={handleSubmit} className="forms-sample">
             <Form.Group className="row">
               <label htmlFor="codigo" className="col-sm-2 col-form-label">
@@ -81,11 +105,33 @@ const CadastroApresentacoes = (props) => {
                   className="form-control"
                   id="descricao"
                   aria-label="descrição input"
-                  placeholder="Descrição da apresentação"
+                  placeholder="Descrição de seção"
                   ref={inputDescricao}
                   {...getFieldProps('descricao')}
                 />
                 <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
+              </div>
+            </Form.Group>
+            <Form.Group className="row">
+              <label htmlFor="responsavel" className="col-sm-2 col-form-label">
+                Responsável:
+              </label>
+              <div className="col-sm-10">
+                <select
+                  className="form-control form-control-sm"
+                  id="responsavel"
+                  ref={inputResponsavel}
+                  {...getFieldProps('responsavel.codigo')}
+                >
+                  <option value={0} selected>
+                    Selecione um responsável
+                  </option>
+                  <option value={29}>Departamento: 1</option>
+                  <option value={30}>Departamento: 2</option>
+                  <option value={31}>Departamento: 3</option>
+                  <option value={32}>Departamento: 4</option>
+                </select>
+                <div>{errors.responsavel?.codigo ? <small>{errors.responsavel?.codigo}</small> : null}</div>
               </div>
             </Form.Group>
             <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
@@ -98,4 +144,4 @@ const CadastroApresentacoes = (props) => {
   )
 }
 
-export default CadastroApresentacoes
+export default CadastroGrupoFilial

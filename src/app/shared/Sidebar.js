@@ -214,8 +214,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/cadastros/filial') ? 'nav-link active' : 'nav-link'}
+                    to="/cadastros/filial"
                   >
                     <Trans>Filial</Trans>
                   </Link>
@@ -223,8 +223,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/pessoafisica') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/pessoafisica"
                   >
                     <Trans>Pessoa Fisica</Trans>
                   </Link>
@@ -232,8 +232,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/pessoajuridica') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/pessoajuridica"
                   >
                     <Trans>Pessoa Jurídica</Trans>
                   </Link>
@@ -241,8 +241,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/grupofilial') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/grupofilial"
                   >
                     <Trans>Grupo Filial</Trans>
                   </Link>
@@ -250,8 +250,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/tipofilial') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/tipofilial"
                   >
                     <Trans>Tipo Filial</Trans>
                   </Link>
@@ -259,8 +259,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/grupointerno') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/grupointerno"
                   >
                     <Trans>Grupo Interno</Trans>
                   </Link>
@@ -268,8 +268,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/grupoexterno') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/grupoexterno"
                   >
                     <Trans>Grupo Externo</Trans>
                   </Link>
@@ -277,8 +277,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/atividadecomercial') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/atividadecomercial"
                   >
                     <Trans>Atividade Comercial</Trans>
                   </Link>
@@ -286,8 +286,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/form-elements/basic-elements') ? 'nav-link active' : 'nav-link'}
-                    to="/form-elements/basic-elements"
+                    className={this.isPathActive('/tables/ramoatividade') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/ramoatividade"
                   >
                     <Trans>Ramo Atividade</Trans>
                   </Link>

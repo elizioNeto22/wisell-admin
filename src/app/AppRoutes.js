@@ -18,6 +18,23 @@ import Marcas from './pages/Cadastros/Marca'
 import CadastroMarcas from './pages/Cadastros/Marca/cadastro'
 import Apresentacoes from './pages/Cadastros/Apresentacao'
 import CadastroApresentacoes from './pages/Cadastros/Apresentacao/cadastro'
+import GrupoFilial from './pages/Cadastros/GrupoFilial'
+import CadastroGrupoFilial from './pages/Cadastros/GrupoFilial/cadastro'
+import TipoFilial from './pages/Cadastros/TipoFilial'
+import CadastroTipoFilial from './pages/Cadastros/TipoFilial/cadastro'
+import GrupoInterno from './pages/Cadastros/GrupoInterno'
+import CadastroGrupoInterno from './pages/Cadastros/GrupoInterno/cadastro'
+import GrupoExterno from './pages/Cadastros/GrupoExterno'
+import CadastroGrupoExterno from './pages/Cadastros/GrupoExterno/cadastro'
+import AtividadeComercial from './pages/Cadastros/AtividadeComercial'
+import CadastroAtividadeComercial from './pages/Cadastros/AtividadeComercial/cadastro'
+import RamoAtividade from './pages/Cadastros/RamoAtividade'
+import CadastroRamoAtividade from './pages/Cadastros/RamoAtividade/cadastro'
+import PessoaJuridica from './pages/Cadastros/PessoaJuridica'
+import CadastroPessoaJuridica from './pages/Cadastros/PessoaJuridica/cadastro'
+import PessoaFisica from './pages/Cadastros/PessoaFisica'
+import CadastroPessoaFisica from './pages/Cadastros/PessoaFisica/cadastro'
+import Filial from './pages/Cadastros/Filial'
 
 const Dashboard = lazy(() => import('./dashboard/Dashboard'))
 
@@ -50,16 +67,32 @@ class AppRoutes extends Component {
           <Route path="/tables/secao" component={Secao} />
           <Route path="/cadastros/secao" component={CadastroSecoes} />
           <Route path="/tables/categoria" component={Categoria} />
-          <Route path="/cadastros/categoria" component={CadastroCategorias}/>
-          <Route path="/tables/subcategoria" component={SubCategorias}/>
-          <Route path="/cadastros/subcategoria" component={CadastrosSubcategorias}/>
-          <Route path="/tables/produto" component={Produto}/>
-          <Route path="/cadastros/produto" component={CadastroProdutos}/>
-          <Route path="/tables/marca" component={Marcas}/>
-          <Route path="/cadastros/marca" component={CadastroMarcas}/>
-          <Route path="/tables/apresentacao" component={Apresentacoes}/>
-          <Route path="/cadastros/apresentacao" component={CadastroApresentacoes}/>
-          
+          <Route path="/cadastros/categoria" component={CadastroCategorias} />
+          <Route path="/tables/subcategoria" component={SubCategorias} />
+          <Route path="/cadastros/subcategoria" component={CadastrosSubcategorias} />
+          <Route path="/tables/produto" component={Produto} />
+          <Route path="/cadastros/produto" component={CadastroProdutos} />
+          <Route path="/tables/marca" component={Marcas} />
+          <Route path="/cadastros/marca" component={CadastroMarcas} />
+          <Route path="/tables/apresentacao" component={Apresentacoes} />
+          <Route path="/cadastros/apresentacao" component={CadastroApresentacoes} />
+          <Route path="/tables/tipofilial" component={TipoFilial} />
+          <Route path="/cadastros/tipofilial" component={CadastroTipoFilial} />
+          <Route path="/tables/grupofilial" component={GrupoFilial} />
+          <Route path="/cadastros/grupofilial" component={CadastroGrupoFilial} />
+          <Route path="/tables/grupoexterno" component={GrupoExterno} />
+          <Route path="/cadastros/grupoexterno" component={CadastroGrupoExterno} />
+          <Route path="/tables/grupointerno" component={GrupoInterno} />
+          <Route path="/cadastros/grupointerno" component={CadastroGrupoInterno} />
+          <Route path="/tables/atividadecomercial" component={AtividadeComercial} />
+          <Route path="/cadastros/atividadecomercial" component={CadastroAtividadeComercial} />
+          <Route path="/tables/ramoatividade" component={RamoAtividade} />
+          <Route path="/cadastros/ramoatividade" component={CadastroRamoAtividade} />
+          <Route path="/tables/pessoajuridica" component={PessoaJuridica} />
+          <Route path="/cadastros/pessoajuridica" component={CadastroPessoaJuridica} />
+          <Route path="/tables/pessoafisica" component={PessoaFisica} />
+          <Route path="/cadastros/pessoafisica" component={CadastroPessoaFisica} />
+          <Route path="/cadastros/filial" component={Filial} />
 
           <Route exact path="/dashboard" component={Dashboard} />
           <Route path="/basic-ui/buttons" component={Buttons} />
