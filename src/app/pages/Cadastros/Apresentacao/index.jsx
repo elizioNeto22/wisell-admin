@@ -1,6 +1,9 @@
 import React from 'react'
 import { ProgressBar } from 'react-bootstrap'
-import { Form } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
+import {Link} from 'react-router-dom'
+import {MdEdit,MdRemoveCircleOutline} from 'react-icons/md'
+import {FaRegClone} from 'react-icons/fa'
 
 const Apresentacoes = () => {
   return (
@@ -51,94 +54,220 @@ const Apresentacoes = () => {
                   <tbody>
                     <tr>
                       <td className="py-1">
-                        <img src={require('../../../../assets/images/faces/face1.jpg')} alt="user icon" />
+                        1
                       </td>
                       <td> Herman Beck </td>
                       <td>
-                        <ProgressBar variant="success" now={25} />
+                       Viviane
                       </td>
                       <td> May 15, 2015 </td>
-                      <td> $ 77.99 </td>
-                      <td> Clonar </td>
-                      <td>Remover </td>
+                      <td>   
+                        <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-warning btn-rounded">
+                                  <MdEdit />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td> 
+                      <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-success btn-rounded">
+                                  <FaRegClone />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td>
+                        <Link to={`/sale-page/${10}`}>
+                              <Button className="btn btn-danger btn-rounded">
+                                    <MdRemoveCircleOutline />
+                              </Button>
+                          </Link>
+                      </td>
                     </tr>
                     <tr>
                       <td className="py-1">
-                        <img src={require('../../../../assets/images/faces/face2.jpg')} alt="user icon" />
+                       2
                       </td>
                       <td> Messsy Adam </td>
                       <td>
-                        <ProgressBar variant="danger" now={75} />
+                        Larissa
                       </td>
                       <td> July 1, 2015 </td>
-                      <td> $245.30 </td>
-                      <td> Clonar </td>
-                      <td>Remover </td>
+                      <td>   
+                        <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-warning btn-rounded">
+                                  <MdEdit />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td> 
+                      <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-success btn-rounded">
+                                  <FaRegClone />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td>
+                        <Link to={`/sale-page/${10}`}>
+                              <Button className="btn btn-danger btn-rounded">
+                                    <MdRemoveCircleOutline />
+                              </Button>
+                          </Link>
+                      </td>
                     </tr>
                     <tr>
                       <td className="py-1">
-                        <img src={require('../../../../assets/images/faces/face3.jpg')} alt="user icon" />
+                       3
                       </td>
                       <td> John Richards </td>
                       <td>
-                        <ProgressBar variant="warning" now={90} />
+                       Igor
                       </td>
                       <td> Apr 12, 2015 </td>
-                      <td> $138.00 </td>
-                      <td> Clonar </td>
-                      <td>Remover </td>
+                      <td>   
+                        <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-warning btn-rounded">
+                                  <MdEdit />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td> 
+                      <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-success btn-rounded">
+                                  <FaRegClone />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td>
+                        <Link to={`/sale-page/${10}`}>
+                              <Button className="btn btn-danger btn-rounded">
+                                    <MdRemoveCircleOutline />
+                              </Button>
+                          </Link>
+                      </td>
                     </tr>
                     <tr>
                       <td className="py-1">
-                        <img src={require('../../../../assets/images/faces/face4.jpg')} alt="user icon" />
+                       4
                       </td>
                       <td> Peter Meggik </td>
                       <td>
-                        <ProgressBar variant="primary" now={50} />
+                       Maria
                       </td>
                       <td> May 15, 2015 </td>
-                      <td> $ 77.99 </td>
-                      <td> Clonar </td>
-                      <td>Remover </td>
+                      <td>   
+                        <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-warning btn-rounded">
+                                  <MdEdit />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td> 
+                      <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-success btn-rounded">
+                                  <FaRegClone />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td>
+                        <Link to={`/sale-page/${10}`}>
+                              <Button className="btn btn-danger btn-rounded">
+                                    <MdRemoveCircleOutline />
+                              </Button>
+                          </Link>
+                      </td>
                     </tr>
                     <tr>
                       <td className="py-1">
-                        <img src={require('../../../../assets/images/faces/face5.jpg')} alt="user icon" />
+                        5
                       </td>
                       <td> Edward </td>
                       <td>
-                        <ProgressBar variant="danger" now={60} />
+                        Murilo
                       </td>
                       <td> May 03, 2015 </td>
-                      <td> $ 160.25 </td>
-                      <td> Clonar </td>
-                      <td>Remover </td>
+                      <td>   
+                        <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-warning btn-rounded">
+                                  <MdEdit />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td> 
+                      <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-success btn-rounded">
+                                  <FaRegClone />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td>
+                        <Link to={`/sale-page/${10}`}>
+                              <Button className="btn btn-danger btn-rounded">
+                                    <MdRemoveCircleOutline />
+                              </Button>
+                          </Link>
+                      </td>
                     </tr>
                     <tr>
                       <td className="py-1">
-                        <img src={require('../../../../assets/images/faces/face6.jpg')} alt="user icon" />
+                       6
                       </td>
                       <td> John Doe </td>
                       <td>
-                        <ProgressBar variant="info" now={65} />
+                        Marcos
                       </td>
                       <td> April 05, 2015 </td>
-                      <td> $ 123.21 </td>
-                      <td> Clonar </td>
-                      <td>Remover </td>
+                      <td>   
+                        <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-warning btn-rounded">
+                                  <MdEdit />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td> 
+                      <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-success btn-rounded">
+                                  <FaRegClone />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td>
+                        <Link to={`/sale-page/${10}`}>
+                              <Button className="btn btn-danger btn-rounded">
+                                    <MdRemoveCircleOutline />
+                              </Button>
+                          </Link>
+                      </td>
                     </tr>
                     <tr>
                       <td className="py-1">
-                        <img src={require('../../../../assets/images/faces/face7.jpg')} alt="user icon" />
+                        7
                       </td>
                       <td> Henry Tom </td>
                       <td>
-                        <ProgressBar variant="warning" now={20} />
+                       Vitor
                       </td>
                       <td> June 16, 2015 </td>
-                      <td> $ 150.00 </td>
-                      <td> Clonar </td>
-                      <td>Remover </td>
+                      <td>   
+                        <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-warning btn-rounded">
+                                  <MdEdit />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td> 
+                      <Link to={`/sale-page/${10}`}>
+                            <Button className="btn btn-success btn-rounded">
+                                  <FaRegClone />
+                            </Button>
+                         </Link> 
+                      </td>
+                      <td>
+                        <Link to={`/sale-page/${10}`}>
+                              <Button className="btn btn-danger btn-rounded">
+                                    <MdRemoveCircleOutline />
+                              </Button>
+                          </Link>
+                      </td>
                     </tr>
                   </tbody>
                 </table>

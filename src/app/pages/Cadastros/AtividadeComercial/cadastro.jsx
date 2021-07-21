@@ -3,7 +3,7 @@ import { useFormik, Formik } from 'formik'
 import { object, string, number, SchemaOf } from 'yup'
 import { Form } from 'react-bootstrap'
 
-const CadastroGrupoFilial = (props) => {
+const CadastroAtividadeComercial = (props) => {
   const { id } = props.match.params
   const isAddMode = !id
 
@@ -12,7 +12,7 @@ const CadastroGrupoFilial = (props) => {
     descricao: '',
     registro: '',
     usuario: '',
-    responsavel: {
+    ramoAtividade: {
       codigo: 0,
       descricao: '',
       registro: '',
@@ -27,7 +27,7 @@ const CadastroGrupoFilial = (props) => {
         .min(2, 'Deve conter pelo menos 2 caracteres')
         .max(100)
         .required('O campo Descrição é obrigatório!'),
-      responsavel: object({
+      ramoAtividade: object({
         codigo: number().min(1, 'Por favor, selecione uma opção de responsável').nullable(),
       }),
       // departamento: object().,
@@ -43,7 +43,7 @@ const CadastroGrupoFilial = (props) => {
 
   const inputCodigo = useRef(null)
   const inputDescricao = useRef(null)
-  const inputResponsavel = useRef(null)
+  const inputRamoAtividade = useRef(null)
 
   useEffect(() => {
     if (!isAddMode) {
@@ -53,7 +53,7 @@ const CadastroGrupoFilial = (props) => {
         descricao: 'edit',
         registro: '',
         usuario: '',
-        responsavel: {
+        ramoAtividade: {
           codigo: 25,
           descricao: 'Descrição Responsável 95',
           registro: '',
@@ -62,7 +62,7 @@ const CadastroGrupoFilial = (props) => {
       }
       setFieldValue('codigo', dataSecao.codigo, false) //"codigo",data.codigo);
       setFieldValue('descricao', dataSecao.descricao, false) //"codigo",data.codigo);
-      setFieldValue('responsavel', dataSecao.responsavel.codigo, false) //"codigo",data.codigo);
+      setFieldValue('ramoAtividade', dataSecao.ramoAtividade.codigo, false) //"codigo",data.codigo);
       //formik.setFieldValue("descricao",data.descricao);
       //inputCodigo = data.codigo;
       setInitialValues(dataSecao)
@@ -72,76 +72,82 @@ const CadastroGrupoFilial = (props) => {
   }, [id, isAddMode, setFieldValue])
 
   return (
-    <div className="col-md-12 grid-margin stretch-card">
-      <div className="card">
-        <div className="card-body">
-          <h3 className="">Grupo Filial</h3>
-          <p className="card-description"> Cadastro de Grupo Filial </p>
-          <form onSubmit={handleSubmit} className="forms-sample">
-            <Form.Group className="row">
-              <label htmlFor="codigo" className="col-sm-2 col-form-label">
-                Código:
-              </label>
-              <div className="col-sm-1">
-                <Form.Control
-                  type="number"
-                  className="form-control"
-                  id="codigo"
-                  placeholder="0"
-                  aria-label="código readonly input"
-                  readOnly
-                  ref={inputCodigo}
-                  {...getFieldProps('codigo')}
-                />
-              </div>
-            </Form.Group>
-            <Form.Group className="row">
-              <label htmlFor="descricao" className="col-sm-2 col-form-label">
-                Descrição:
-              </label>
-              <div className="col-sm-10">
-                <Form.Control
-                  type="text"
-                  className="form-control"
-                  id="descricao"
-                  aria-label="descrição input"
-                  placeholder="Descrição de seção"
-                  ref={inputDescricao}
-                  {...getFieldProps('descricao')}
-                />
-                <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
-              </div>
-            </Form.Group>
-            <Form.Group className="row">
-              <label htmlFor="responsavel" className="col-sm-2 col-form-label">
-                Responsável:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="responsavel"
-                  ref={inputResponsavel}
-                  {...getFieldProps('responsavel.codigo')}
-                >
-                  <option value={0} selected>
-                    Selecione um responsável
-                  </option>
-                  <option value={29}>Departamento: 1</option>
-                  <option value={30}>Departamento: 2</option>
-                  <option value={31}>Departamento: 3</option>
-                  <option value={32}>Departamento: 4</option>
-                </select>
-                <div>{errors.responsavel?.codigo ? <small>{errors.responsavel?.codigo}</small> : null}</div>
-              </div>
-            </Form.Group>
-            <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-              Salvar
-            </button>
-          </form>
+    <div>
+      <div className="page-header">
+        <h3 className="page-title"> Atividade Comercial </h3>
+      </div>
+      <nav aria-label="breadcrumb">
+        <p className="breadcrumb-item active">Cadastro de atividade comercial</p>
+      </nav>
+      <div className="col-md-12 grid-margin stretch-card">
+        <div className="card">
+          <div className="card-body">
+            <form onSubmit={handleSubmit} className="forms-sample">
+              <Form.Group className="row">
+                <label htmlFor="codigo" className="col-sm-2 col-form-label">
+                  Código:
+                </label>
+                <div className="col-sm-1">
+                  <Form.Control
+                    type="number"
+                    className="form-control"
+                    id="codigo"
+                    placeholder="0"
+                    aria-label="código readonly input"
+                    readOnly
+                    ref={inputCodigo}
+                    {...getFieldProps('codigo')}
+                  />
+                </div>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="descricao" className="col-sm-2 col-form-label">
+                  Descrição:
+                </label>
+                <div className="col-sm-10">
+                  <Form.Control
+                    type="text"
+                    className="form-control"
+                    id="descricao"
+                    aria-label="descrição input"
+                    placeholder="Descrição da atividade comercial"
+                    ref={inputDescricao}
+                    {...getFieldProps('descricao')}
+                  />
+                  <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
+                </div>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="responsavel" className="col-sm-2 col-form-label">
+                  Ramo Atividade:
+                </label>
+                <div className="col-sm-10">
+                  <select
+                    className="form-control form-control-sm"
+                    id="responsavel"
+                    ref={inputRamoAtividade}
+                    {...getFieldProps('ramoAtividade.codigo')}
+                  >
+                    <option value={0} selected>
+                      Selecione o Ramo Atividade
+                    </option>
+                    <option value={29}>Ramo Atividade: 1</option>
+                    <option value={30}>Ramo Atividade: 2</option>
+                    <option value={31}>Ramo Atividade: 3</option>
+                    <option value={32}>Ramo Atividade: 4</option>
+                  </select>
+                  <div>{errors.ramoAtividade?.codigo ? <small>{errors.ramoAtividade?.codigo}</small> : null}</div>
+                </div>
+              </Form.Group>
+              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
+                Salvar
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
   )
 }
 
-export default CadastroGrupoFilial
+export default CadastroAtividadeComercial

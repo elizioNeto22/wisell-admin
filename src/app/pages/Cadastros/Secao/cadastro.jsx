@@ -72,11 +72,16 @@ const CadastroSecoes = (props) => {
   }, [id, isAddMode, setFieldValue])
 
   return (
+    <div>
+      <div className="page-header">
+        <h3 className="page-title"> Seção </h3>
+   </div>
+    <nav aria-label="breadcrumb">
+            <p className="breadcrumb-item active">Cadastro de seção</p>
+    </nav>
     <div className="col-md-12 grid-margin stretch-card">
       <div className="card">
         <div className="card-body">
-          <h3 className="">Seção</h3>
-          <p className="card-description"> Cadastro de Seção </p>
           <form onSubmit={handleSubmit} className="forms-sample">
             <Form.Group className="row">
               <label htmlFor="codigo" className="col-sm-2 col-form-label">
@@ -141,6 +146,7 @@ const CadastroSecoes = (props) => {
         </div>
       </div>
     </div>
+  </div>
   )
 }
 

@@ -89,11 +89,16 @@ const CadastroCategorias = (props) => {
   }, [id, isAddMode, setFieldValue])
 
   return (
+    <div>
+      <div className="page-header">
+       <h3 className="page-title"> Categoria </h3>
+      </div>
+        <nav aria-label="breadcrumb">
+          <p className="breadcrumb-item active">Cadastro de Categoria</p>
+        </nav>
     <div className="col-md-12 grid-margin stretch-card">
       <div className="card">
         <div className="card-body">
-          <h3 className="">Categoria</h3>
-          <p className="card-description"> Cadastro de Categoria </p>
           <form onSubmit={handleSubmit} className="forms-sample">
             <Form.Group className="row">
               <label htmlFor="codigo" className="col-sm-2 col-form-label">
@@ -178,6 +183,7 @@ const CadastroCategorias = (props) => {
         </div>
       </div>
     </div>
+  </div>
   )
 }
 

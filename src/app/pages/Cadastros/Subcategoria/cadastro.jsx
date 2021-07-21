@@ -106,114 +106,120 @@ const CadastroSubCategorias = (props) => {
   }, [id, isAddMode, setFieldValue])
 
   return (
-    <div className="col-md-12 grid-margin stretch-card">
-      <div className="card">
-        <div className="card-body">
-          <h3 className="">Subcategoria</h3>
-          <p className="card-description"> Cadastro de Subcategoria </p>
-          <form onSubmit={handleSubmit} className="forms-sample">
-            <Form.Group className="row">
-              <label htmlFor="codigo" className="col-sm-2 col-form-label">
-                Código:
-              </label>
-              <div className="col-sm-1">
-                <Form.Control
-                  type="number"
-                  className="form-control"
-                  id="codigo"
-                  placeholder="0"
-                  aria-label="código readonly input"
-                  readOnly
-                  ref={inputCodigo}
-                  {...getFieldProps('codigo')}
-                />
-              </div>
-            </Form.Group>
-            <Form.Group className="row">
-              <label htmlFor="descricao" className="col-sm-2 col-form-label">
-                Descrição:
-              </label>
-              <div className="col-sm-10">
-                <Form.Control
-                  type="text"
-                  className="form-control"
-                  id="descricao"
-                  aria-label="descrição input"
-                  placeholder="Descrição de subcategoria"
-                  ref={inputDescricao}
-                  {...getFieldProps('descricao')}
-                />
-                <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
-              </div>
-            </Form.Group>
-            <Form.Group className="row">
-              <label htmlFor="categoria" className="col-sm-2 col-form-label">
-                Categoria:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="categoria"
-                  ref={inputCategoria}
-                  {...getFieldProps('categoria.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Categoria</option>
-                  <option value={9}>Categoria: 1</option>
-                  <option value={10}>Categoria: 2</option>
-                  <option value={11}>Categoria: 3</option>
-                  <option value={12}>Categoria: 4</option>
-                </select>
-                <div>{errors.categoria?.codigo ? <small>{errors.categoria?.codigo}</small> : null}</div>
-              </div>
-            </Form.Group>
-            <Form.Group className="row">
-              <label htmlFor="secao" className="col-sm-2 col-form-label">
-                Seção:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="secao"
-                  ref={inputSecao}
-                  {...getFieldProps('categoria.secao.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Seção</option>
-                  <option value={5}>Seção: 1</option>
-                  <option value={6}>Seção: 2</option>
-                  <option value={7}>Seção: 3</option>
-                  <option value={8}>Seção: 4</option>
-                </select>
-                <div>{errors.categoria?.secao?.codigo ? <small>{errors.categoria?.secao?.codigo}</small> : null}</div>
-              </div>
-            </Form.Group>
-            <Form.Group className="row">
-              <label htmlFor="departamento" className="col-sm-2 col-form-label">
-                Departamento:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="departamento"
-                  ref={inputDepartamento}
-                  {...getFieldProps('categoria.secao.departamento.codigo')}
-                >
-                  <option defaultValue={0}>Selecione um departamento</option>
-                  <option value={1}>Departamento: 1</option>
-                  <option value={2}>Departamento: 2</option>
-                  <option value={3}>Departamento: 3</option>
-                  <option value={4}>Departamento: 4</option>
-                </select>
-                <div>
-                  {errors.categoria?.secao?.departamento?.codigo ? (
-                    <small>{errors.categoria?.secao?.departamento?.codigo}</small>
-                  ) : null}
+    <div>
+      <div className="page-header">
+        <h3 className="page-title"> Subcategoria </h3>
+      </div>
+        <nav aria-label="breadcrumb">
+          <p className="breadcrumb-item active">Cadastro de Subcategoria</p>
+        </nav>
+      <div className="col-md-12 grid-margin stretch-card">
+        <div className="card">
+          <div className="card-body">
+            <form onSubmit={handleSubmit} className="forms-sample">
+              <Form.Group className="row">
+                <label htmlFor="codigo" className="col-sm-2 col-form-label">
+                  Código:
+                </label>
+                <div className="col-sm-1">
+                  <Form.Control
+                    type="number"
+                    className="form-control"
+                    id="codigo"
+                    placeholder="0"
+                    aria-label="código readonly input"
+                    readOnly
+                    ref={inputCodigo}
+                    {...getFieldProps('codigo')}
+                  />
                 </div>
-              </div>
-            </Form.Group>
-            <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-              Salvar
-            </button>
-          </form>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="descricao" className="col-sm-2 col-form-label">
+                  Descrição:
+                </label>
+                <div className="col-sm-10">
+                  <Form.Control
+                    type="text"
+                    className="form-control"
+                    id="descricao"
+                    aria-label="descrição input"
+                    placeholder="Descrição de subcategoria"
+                    ref={inputDescricao}
+                    {...getFieldProps('descricao')}
+                  />
+                  <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
+                </div>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="categoria" className="col-sm-2 col-form-label">
+                  Categoria:
+                </label>
+                <div className="col-sm-10">
+                  <select
+                    className="form-control form-control-sm"
+                    id="categoria"
+                    ref={inputCategoria}
+                    {...getFieldProps('categoria.codigo')}
+                  >
+                    <option defaultValue={0}>Selecione uma Categoria</option>
+                    <option value={9}>Categoria: 1</option>
+                    <option value={10}>Categoria: 2</option>
+                    <option value={11}>Categoria: 3</option>
+                    <option value={12}>Categoria: 4</option>
+                  </select>
+                  <div>{errors.categoria?.codigo ? <small>{errors.categoria?.codigo}</small> : null}</div>
+                </div>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="secao" className="col-sm-2 col-form-label">
+                  Seção:
+                </label>
+                <div className="col-sm-10">
+                  <select
+                    className="form-control form-control-sm"
+                    id="secao"
+                    ref={inputSecao}
+                    {...getFieldProps('categoria.secao.codigo')}
+                  >
+                    <option defaultValue={0}>Selecione uma Seção</option>
+                    <option value={5}>Seção: 1</option>
+                    <option value={6}>Seção: 2</option>
+                    <option value={7}>Seção: 3</option>
+                    <option value={8}>Seção: 4</option>
+                  </select>
+                  <div>{errors.categoria?.secao?.codigo ? <small>{errors.categoria?.secao?.codigo}</small> : null}</div>
+                </div>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="departamento" className="col-sm-2 col-form-label">
+                  Departamento:
+                </label>
+                <div className="col-sm-10">
+                  <select
+                    className="form-control form-control-sm"
+                    id="departamento"
+                    ref={inputDepartamento}
+                    {...getFieldProps('categoria.secao.departamento.codigo')}
+                  >
+                    <option defaultValue={0}>Selecione um departamento</option>
+                    <option value={1}>Departamento: 1</option>
+                    <option value={2}>Departamento: 2</option>
+                    <option value={3}>Departamento: 3</option>
+                    <option value={4}>Departamento: 4</option>
+                  </select>
+                  <div>
+                    {errors.categoria?.secao?.departamento?.codigo ? (
+                      <small>{errors.categoria?.secao?.departamento?.codigo}</small>
+                    ) : null}
+                  </div>
+                </div>
+              </Form.Group>
+              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
+                Salvar
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
