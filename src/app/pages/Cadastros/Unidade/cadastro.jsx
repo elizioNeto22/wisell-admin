@@ -3,7 +3,6 @@ import { Form } from 'react-bootstrap'
 import { object, string } from 'yup'
 import { useFormik, Formik } from 'formik'
 
-
 const CadastroUnidades = (props) => {
   const { id } = props.match.params
   const isAddMode = !id
@@ -38,6 +37,7 @@ const CadastroUnidades = (props) => {
   useEffect(() => {
     if (!isAddMode) {
       // get user and set form fields
+
       const data = { codigo: id, descricao: 'edit', registro: '', usuario: '' }
       setFieldValue('codigo', data.codigo, false) //"codigo",data.codigo);
       setFieldValue('descricao', data.descricao, false) //"codigo",data.codigo);
@@ -46,16 +46,16 @@ const CadastroUnidades = (props) => {
       setInitialValues(data)
       //alert(JSON.stringify(data))
     }
-  }, [id, isAddMode, setFieldValue])
-
+    console.log(props)
+  }, [id, isAddMode, props, setFieldValue])
   return (
     <div>
+      {console.log(props)}
       <div className="page-header">
         <h3 className="page-title"> Unidade </h3>
-    
-    </div>
+      </div>
       <nav aria-label="breadcrumb">
-              <p className="breadcrumb-item active">Cadastro de unidade</p>
+        <p className="breadcrumb-item active">Cadastro de unidade</p>
       </nav>
       <div className="col-md-12 grid-margin stretch-card">
         <div className="card">
@@ -72,7 +72,7 @@ const CadastroUnidades = (props) => {
                     id="codigo"
                     placeholder="0"
                     aria-label="código readonly input"
-                    readOnly 
+                    readOnly
                     ref={inputCodigo}
                     {...getFieldProps('codigo')}
                   />
@@ -99,9 +99,9 @@ const CadastroUnidades = (props) => {
                 Salvar
               </button>
             </form>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }

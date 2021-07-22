@@ -60,8 +60,10 @@ class AppRoutes extends Component {
     return (
       <Suspense fallback={<Spinner />}>
         <Switch>
-          <Route path="/tables/unidade" component={Unidade} />
-          <Route path="/cadastros/unidade" component={CadastroUnidades} />
+          <Route path="/tables/unidade" exact component={Unidade} />
+          <Route path="/cadastros/unidade" exact component={CadastroUnidades} />
+          <Route path="/cadastros/:id/unidade" exact component={CadastroUnidades} />
+          <Route path="/cadastros/:id/unidade" exact component={CadastroUnidades} />
           <Route path="/tables/Departamento" component={Departamento} />
           <Route path="/cadastros/departamento" component={CadastroDepartamentos} />
           <Route path="/tables/secao" component={Secao} />
@@ -106,7 +108,7 @@ class AppRoutes extends Component {
           <Route path="/error-pages/error-404" component={Error404} />
           <Route path="/error-pages/error-500" component={Error500} />
 
-          <Redirect to="/dashboard" />
+          {/* <Redirect to="/dashboard" /> */}
         </Switch>
       </Suspense>
     )

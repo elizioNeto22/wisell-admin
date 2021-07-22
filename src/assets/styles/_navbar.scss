@@ -22,7 +22,7 @@
     padding-right: 15px;
     width: calc(100% - #{$sidebar-width-lg});
     height: $navbar-height;
-    background: $navbar-bg;
+    background: $list-border-bg;
     @media (max-width: 991px) {
       width: 100%;
       padding-left: 11px;
@@ -90,10 +90,10 @@
             }
           }
           .badge {
-            margin-left: .5rem;
+            margin-left: 0.5rem;
             .rtl & {
               margin-left: 0;
-              margin-right: .5rem;
+              margin-right: 0.5rem;
             }
           }
         }
@@ -102,9 +102,9 @@
             padding: 0;
             font-weight: normal;
             &:after {
-              content: "\F140";
+              content: '\F140';
               display: inline-block;
-              font: normal normal normal 24px/1 "Material Design Icons";
+              font: normal normal normal 24px/1 'Material Design Icons';
               font-size: inherit;
               text-rendering: auto;
               line-height: inherit;
@@ -128,7 +128,7 @@
             margin-left: 2.5rem;
             .rtl & {
               margin-left: 0;
-              margin-right: .5rem;
+              margin-right: 0.5rem;
             }
           }
           .count-indicator {
@@ -274,7 +274,7 @@
           @media (max-width: 991px) {
             .navbar-dropdown {
               min-width: 320px;
-            } 
+            }
           }
         }
         &.nav-search {
@@ -328,7 +328,6 @@
             width: 170px;
             left: -15px !important;
 
-
             .dropdown-item {
               padding-left: 22px;
               padding-right: 12px;
@@ -362,9 +361,9 @@
             .dropdown {
               .dropdown-toggle {
                 &:after {
-                  content: "\F140";
+                  content: '\F140';
                   display: inline-block;
-                  font: normal normal normal 24px/1 "Material Design Icons";
+                  font: normal normal normal 24px/1 'Material Design Icons';
                   font-size: inherit;
                   text-rendering: auto;
                   line-height: inherit;
@@ -413,7 +412,6 @@
 
           &.active {
             background: rgba($white, 0.13);
-            
           }
         }
       }
@@ -480,7 +478,7 @@
     padding-top: 0;
   }
 }
-@media (max-width:991px) {
+@media (max-width: 991px) {
   .navbar {
     flex-direction: row;
     .navbar-menu-wrapper {
@@ -503,13 +501,13 @@
   }
 }
 
-@media (max-width:480px) {
+@media (max-width: 480px) {
   .navbar {
     .navbar-brand-wrapper {
       width: 55px;
-      .brand-logo-mini{
+      .brand-logo-mini {
         padding-top: 0px;
       }
     }
   }
-} 
+}

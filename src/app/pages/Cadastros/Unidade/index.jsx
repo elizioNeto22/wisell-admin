@@ -1,10 +1,24 @@
-import React from 'react'
-import { Form,Button } from 'react-bootstrap'
-import {Link} from 'react-router-dom'
-import {MdEdit,MdRemoveCircleOutline} from 'react-icons/md'
-import {FaRegClone} from 'react-icons/fa'
+import React, { useState } from 'react'
+import { useQuery } from 'react-apollo'
+import * as queries from '../../../../api/queries'
+import { Link } from 'react-router-dom'
+
+import { Form, Button } from 'react-bootstrap'
+import { MdEdit, MdRemoveCircleOutline } from 'react-icons/md'
+import { FaRegClone } from 'react-icons/fa'
 
 const Unidades = () => {
+  const [term, setTerm] = useState('')
+  const { loading, error, data } = useQuery(queries.UNIDADES)
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    //searchUnidades(term);
+  }
+
+  if (error) {
+    return <h1>{error.message}</h1>
+  }
   return (
     <div>
       <div className="page-header">
@@ -20,7 +34,7 @@ const Unidades = () => {
       <div className="row">
         <div className="col-lg-12 grid-margin stretch-card">
           <div className="card">
-            <div className="card-body">
+            <form onSubmit={handleSubmit} className="card-body">
               <Form.Group>
                 <div className="input-group">
                   <Form.Control
@@ -29,6 +43,8 @@ const Unidades = () => {
                     placeholder="Pesquisar Unidades"
                     aria-label="Pesquisar Unidades"
                     aria-describedby="basic-addon2"
+                    value={term}
+                    onChange={(e) => setTerm(e.target.value)}
                   />
                   <div className="input-group-append">
                     <button className="btn btn-sm btn-primary" type="button">
@@ -51,227 +67,43 @@ const Unidades = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className="py-1">
-                        1
-                      </td>
-                      <td> Herman Beck </td>
-                      <td>
-                        Murilo
-                      </td>
-                      <td> May 15, 2015 </td>
-                      <td>   
-                        <Link to={`/sale-page/${10}`}>
+                    {data?.unidades?.map((item) => (
+                      <tr key={item.codigo}>
+                        <td>{item.codigo}</td>
+                        <td>{item.descricao}</td>
+                        <td>{item.registro}</td>
+                        <td>{item.usuario}</td>
+                        <td>
+                          <Link to={`cadastros/${item.codigo}/unidade`}>
                             <Button className="btn btn-warning btn-rounded">
-                                  <MdEdit />
+                              <MdEdit />
                             </Button>
-                         </Link> 
-                      </td>
-                      <td> 
-                      <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-success btn-rounded">
-                                  <FaRegClone />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td>
-                        <Link to={`/sale-page/${10}`}>
-                              <Button className="btn btn-danger btn-rounded">
-                                    <MdRemoveCircleOutline />
-                              </Button>
                           </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-1">
-                       2
-                      </td>
-                      <td> Messsy Adam </td>
-                      <td>
-                       Igor
-                      </td>
-                      <td> July 1, 2015 </td>
-                      <td>   
-                        <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-warning btn-rounded">
-                                  <MdEdit />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td> 
-                      <Link to={`/sale-page/${10}`}>
+                        </td>
+                        <td>
+                          <Link to={`cadastros/${item.codigo}/unidade`}>
                             <Button className="btn btn-success btn-rounded">
-                                  <FaRegClone />
+                              <FaRegClone />
                             </Button>
-                         </Link> 
-                      </td>
-                      <td>
-                        <Link to={`/sale-page/${10}`}>
-                              <Button className="btn btn-danger btn-rounded">
-                                    <MdRemoveCircleOutline />
-                              </Button>
                           </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-1">
-                        3
-                      </td>
-                      <td> John Richards </td>
-                      <td>
-                        Maria
-                      </td>
-                      <td> Apr 12, 2015 </td>
-                      <td>   
-                        <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-warning btn-rounded">
-                                  <MdEdit />
+                        </td>
+                        <td>
+                          <Link to={`cadastros/${item.codigo}/unidade`}>
+                            <Button className="btn btn-danger btn-rounded">
+                              <MdRemoveCircleOutline />
                             </Button>
-                         </Link> 
-                      </td>
-                      <td> 
-                      <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-success btn-rounded">
-                                  <FaRegClone />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td>
-                        <Link to={`/sale-page/${10}`}>
-                              <Button className="btn btn-danger btn-rounded">
-                                    <MdRemoveCircleOutline />
-                              </Button>
                           </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-1">
-                       4
-                      </td>
-                      <td> Peter Meggik </td>
-                      <td>
-                        Jonas
-                      </td>
-                      <td> May 15, 2015 </td>
-                      <td>   
-                        <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-warning btn-rounded">
-                                  <MdEdit />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td> 
-                      <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-success btn-rounded">
-                                  <FaRegClone />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td>
-                        <Link to={`/sale-page/${10}`}>
-                              <Button className="btn btn-danger btn-rounded">
-                                    <MdRemoveCircleOutline />
-                              </Button>
-                          </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-1">
-                        5
-                      </td>
-                      <td> Edward </td>
-                      <td>
-                       Victor
-                      </td>
-                      <td> May 03, 2015 </td>
-                      <td>   
-                        <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-warning btn-rounded">
-                                  <MdEdit />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td> 
-                      <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-success btn-rounded">
-                                  <FaRegClone />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td>
-                        <Link to={`/sale-page/${10}`}>
-                              <Button className="btn btn-danger btn-rounded">
-                                    <MdRemoveCircleOutline />
-                              </Button>
-                          </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-1">
-                        6
-                      </td>
-                      <td> John Doe </td>
-                      <td>
-                       Carlos
-                      </td>
-                      <td> April 05, 2015 </td>
-                      <td>   
-                        <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-warning btn-rounded">
-                                  <MdEdit />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td> 
-                      <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-success btn-rounded">
-                                  <FaRegClone />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td>
-                        <Link to={`/sale-page/${10}`}>
-                              <Button className="btn btn-danger btn-rounded">
-                                    <MdRemoveCircleOutline />
-                              </Button>
-                          </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="py-1">
-                       7
-                      </td>
-                      <td> Henry Tom </td>
-                      <td>
-                        Bruna
-                      </td>
-                      <td> June 16, 2015 </td>
-                      <td>   
-                        <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-warning btn-rounded">
-                                  <MdEdit />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td> 
-                      <Link to={`/sale-page/${10}`}>
-                            <Button className="btn btn-success btn-rounded">
-                                  <FaRegClone />
-                            </Button>
-                         </Link> 
-                      </td>
-                      <td>
-                        <Link to={`/sale-page/${10}`}>
-                              <Button className="btn btn-danger btn-rounded">
-                                    <MdRemoveCircleOutline />
-                              </Button>
-                          </Link>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
-            </div>
+              <Form.Group>
+                {error && <h3>{error}</h3>}
+                {loading && <h3>Carregando...</h3>}
+              </Form.Group>
+            </form>
           </div>
         </div>
       </div>
