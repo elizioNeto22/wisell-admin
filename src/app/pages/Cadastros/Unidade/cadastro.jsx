@@ -46,11 +46,9 @@ const CadastroUnidades = (props) => {
       setInitialValues(data)
       //alert(JSON.stringify(data))
     }
-    console.log(props)
   }, [id, isAddMode, props, setFieldValue])
   return (
     <div>
-      {console.log(props)}
       <div className="page-header">
         <h3 className="page-title"> Unidade </h3>
       </div>
@@ -95,7 +93,12 @@ const CadastroUnidades = (props) => {
                   <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
                 </div>
               </Form.Group>
-              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
+              <button
+                type="submit"
+                disabled={isSubmitting || isValidating}
+                className="btn btn-primary btn-lg"
+                style={{ float: 'right' }}
+              >
                 Salvar
               </button>
             </form>

@@ -74,21 +74,21 @@ const Unidades = () => {
                         <td>{item.registro}</td>
                         <td>{item.usuario}</td>
                         <td>
-                          <Link to={`cadastros/${item.codigo}/unidade`}>
+                          <Link to={`/cadastros/${item.codigo}/unidade`}>
                             <Button className="btn btn-warning btn-rounded">
                               <MdEdit />
                             </Button>
                           </Link>
                         </td>
                         <td>
-                          <Link to={`cadastros/${item.codigo}/unidade`}>
+                          <Link to={`/cadastros/${item.codigo}/unidade`}>
                             <Button className="btn btn-success btn-rounded">
                               <FaRegClone />
                             </Button>
                           </Link>
                         </td>
                         <td>
-                          <Link to={`cadastros/${item.codigo}/unidade`}>
+                          <Link to={`/cadastros/${item.codigo}/unidade`}>
                             <Button className="btn btn-danger btn-rounded">
                               <MdRemoveCircleOutline />
                             </Button>
