@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFormik, Formik } from 'formik'
 import { object, string, number, SchemaOf } from 'yup'
-import { Form } from 'react-bootstrap'
+import { Form, ButtonGroup, Button } from 'react-bootstrap'
+import { IoSaveOutline } from 'react-icons/io5'
+import { FcCancel } from 'react-icons/fc'
+import { useQuery } from 'react-apollo'
+import * as queries from '../../../../api/queries'
 
 const CadastroCategorias = (props) => {
   const { id } = props.match.params
   const isAddMode = !id
+  const { data } = useQuery(queries.CATEGORIAS)
 
   const [initialValues, setInitialValues] = useState({
     codigo: 0,
@@ -139,18 +144,19 @@ const CadastroCategorias = (props) => {
                 Seção:
               </label>
               <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="secao"
-                  ref={inputSecao}
-                  {...getFieldProps('secao.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Seção</option>
-                  <option value={5}>Seção: 1</option>
-                  <option value={6}>Seção: 2</option>
-                  <option value={7}>Seção: 3</option>
-                  <option value={8}>Seção: 4</option>
-                </select>
+              <select
+                    className="form-control form-control-sm"
+                    id="categoria"
+                    ref={inputSecao}
+                    {...getFieldProps('secao.codigo')}
+                  >
+                    <option value={0} selected>
+                      Selecione uma Seção
+                    </option>
+                    {data?.categorias?.map(({ secao }) => (
+                      <option value={secao.codigo}>{secao.descricao}</option>
+                    ))}
+                  </select>
                 <div>{errors.secao?.codigo ? <small>{errors.secao?.codigo}</small> : null}</div>
               </div>
             </Form.Group>
@@ -165,25 +171,33 @@ const CadastroCategorias = (props) => {
                   ref={inputDepartamento}
                   {...getFieldProps('secao.departamento.codigo')}
                 >
-                  <option defaultValue={0}>Selecione um departamento</option>
-                  <option value={1}>Departamento: 1</option>
-                  <option value={2}>Departamento: 2</option>
-                  <option value={3}>Departamento: 3</option>
-                  <option value={4}>Departamento: 4</option>
+                 <option value={0} selected>
+                      Selecione um departamento
+                    </option>
+                    {data?.categorias?.map(({ secao }) => (
+                      <option value={secao.departamento.codigo}>{secao.departamento.descricao}</option>
+                    ))}
                 </select>
-                <div>
-                  {errors.secao?.departamento?.codigo ? <small>{errors.secao?.departamento?.codigo}</small> : null}
-                </div>
+              <div>
+                {errors.secao?.departamento?.codigo ? <small>{errors.secao?.departamento?.codigo}</small> : null}
               </div>
-            </Form.Group>
-            <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-              Salvar
-            </button>
-          </form>
-        </div>
+            </div>
+          </Form.Group>
+          <Form.Group className="row" style={{ float: 'right' }}>
+            <ButtonGroup className="mr-2">
+              <Button type="button" className="btn btn-light btn-default btn-sm">
+                <FcCancel fontSize="20px" /> CANCELAR
+              </Button>
+            </ButtonGroup>
+            <Button type="submit" className="btn btn-success btn-md">
+              <IoSaveOutline fontSize="20px" /> SALVAR
+            </Button>
+          </Form.Group>
+        </form>
       </div>
     </div>
   </div>
+</div>
   )
 }
 

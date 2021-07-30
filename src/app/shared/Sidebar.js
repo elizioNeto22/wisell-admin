@@ -95,8 +95,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/basic-ui/buttons') ? 'nav-link active' : 'nav-link'}
-                    to="/basic-ui/buttons"
+                    className={this.isPathActive('/tables/vendedor') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/vendedor"
                   >
                     <Trans>Vendedor</Trans>
                   </Link>
@@ -104,8 +104,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/basic-ui/buttons') ? 'nav-link active' : 'nav-link'}
-                    to="/basic-ui/buttons"
+                    className={this.isPathActive('/tables/cliente') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/cliente"
                   >
                     <Trans>Cliente</Trans>
                   </Link>
@@ -113,8 +113,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/basic-ui/buttons') ? 'nav-link active' : 'nav-link'}
-                    to="/basic-ui/buttons"
+                    className={this.isPathActive('/tables/grupoEconomico') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/grupoEconomico"
                   >
                     <Trans>Grupo Econômico</Trans>
                   </Link>
@@ -122,8 +122,8 @@ class Sidebar extends Component {
                 <li className="nav-item">
                   {' '}
                   <Link
-                    className={this.isPathActive('/basic-ui/buttons') ? 'nav-link active' : 'nav-link'}
-                    to="/basic-ui/buttons"
+                    className={this.isPathActive('/tables/parceiroComercial') ? 'nav-link active' : 'nav-link'}
+                    to="/tables/parceiroComercial"
                   >
                     <Trans>Parceiros Comerciais</Trans>
                   </Link>

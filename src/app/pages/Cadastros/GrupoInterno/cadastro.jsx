@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFormik, Formik } from 'formik'
 import { object, string, number, SchemaOf } from 'yup'
-import { Form } from 'react-bootstrap'
+import { Form, ButtonGroup, Button } from 'react-bootstrap'
+import { IoSaveOutline } from 'react-icons/io5'
+import { FcCancel } from 'react-icons/fc'
+import { useQuery } from 'react-apollo'
+import * as queries from '../../../../api/queries'
 
 const CadastroGrupoInterno = (props) => {
   const { id } = props.match.params
   const isAddMode = !id
+  const { data } = useQuery(queries.GRUPOSINTERNOS)
 
   const [initialValues, setInitialValues] = useState({
     codigo: 0,
@@ -110,7 +115,7 @@ const CadastroGrupoInterno = (props) => {
                     className="form-control"
                     id="descricao"
                     aria-label="descrição input"
-                    placeholder="Descrição do grupo externo"
+                    placeholder="Descrição do grupo interno"
                     ref={inputDescricao}
                     {...getFieldProps('descricao')}
                   />
@@ -131,17 +136,23 @@ const CadastroGrupoInterno = (props) => {
                     <option value={0} selected>
                       Selecione um responsável
                     </option>
-                    <option value={29}>Grupo Interno: 1</option>
-                    <option value={30}>Grupo Interno: 2</option>
-                    <option value={31}>Grupo Interno: 3</option>
-                    <option value={32}>Grupo Interno: 4</option>
+                    {data?.gruposinternos?.map(({ responsavel }) => (
+                      <option value={responsavel.codigo}>{responsavel.descricao}</option>
+                    ))}
                   </select>
                   <div>{errors.responsavel?.codigo ? <small>{errors.responsavel?.codigo}</small> : null}</div>
                 </div>
               </Form.Group>
-              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-                Salvar
-              </button>
+              <Form.Group className="row" style={{ float: 'right' }}>
+                <ButtonGroup className="mr-2">
+                  <Button type="button" className="btn btn-light btn-default btn-sm">
+                    <FcCancel fontSize="20px" /> CANCELAR
+                  </Button>
+                </ButtonGroup>
+                <Button type="submit" className="btn btn-success btn-md">
+                  <IoSaveOutline fontSize="20px" /> SALVAR
+                </Button>
+              </Form.Group>
             </form>
           </div>
         </div>

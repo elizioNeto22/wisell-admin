@@ -47,8 +47,6 @@ export const SUBCATEGORIAS = gql`
     subcategorias: allSubcategoria {
       codigo
       descricao
-      departamento
-      secao
       categoria
       registro
       usuario
@@ -179,8 +177,9 @@ export const CLIENTES = gql`
   query {
     clientes: allClientes {
       codigo
-      descricao
+      nome
       tipo
+      vendedor
       ativa
       registro
       usuario
@@ -203,10 +202,24 @@ export const VENDEDORES = gql`
   query {
     vendedores: allVendedors {
       codigo
-      descricao
+      vendedor
       ativo
       supervisor
       nivel
+      registro
+      usuario
+    }
+  }
+`
+
+export const PARCEIROSCOMERCIAIS = gql`
+  query {
+    parceiroscomerciais: allParceiroComercials {
+      codigo
+      parceiro
+      funcao
+      responsavel
+      ativo
       registro
       usuario
     }

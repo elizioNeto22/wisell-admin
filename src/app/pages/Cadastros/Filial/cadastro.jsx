@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import { object, string, number } from 'yup'
 import { Form } from 'react-bootstrap'
+import Datepicker from '../../../../assets/styles/components/datepicker'
 
 const CadastroProdutos = (props) => {
   const { id } = props.match.params
@@ -12,49 +13,41 @@ const CadastroProdutos = (props) => {
     descricao: '',
     registro: '',
     usuario: '',
-    ean1: '',
-    ean2: '',
-    fabricante: {
+    empresa: {
       codigo: 0,
       descricao: '',
       registro: '',
       usuario: '',
-      apresentacao: {
+      responsavel: {
         codigo: 0,
         descricao: '',
         registro: '',
         usuario: '',
-        marca: {
+        supervisor: {
           codigo: 0,
           descricao: '',
           registro: '',
           usuario: '',
-          subcategoria: {
+          grupofilial: {
             codigo: 0,
             descricao: '',
             registro: '',
             usuario: '',
-            categoria: {
+            grupointerno: {
               codigo: 0,
               descricao: '',
               registro: '',
               usuario: '',
-              secao: {
+              grupoexterno: {
                 codigo: 0,
                 descricao: '',
                 registro: '',
                 usuario: '',
-                departamento: {
+                tipofilial: {
                   codigo: 0,
                   descricao: '',
                   registro: '',
                   usuario: '',
-                  unidade: {
-                    codigo: 0,
-                    descricao: '',
-                    registro: '',
-                    usuario: '',
-                  },
                 },
               },
             },
@@ -71,25 +64,20 @@ const CadastroProdutos = (props) => {
         .min(2, 'Deve conter pelo menos 2 caracteres')
         .max(100)
         .required('O campo Descrição é obrigatório!'),
-      ean1: string().min(2, 'Deve conter pelo menos 2 caracteres').max(100).required('O campo EAN 1 é obrigatório!'),
-      ean2: string().min(2, 'Deve conter pelo menos 2 caracteres').max(100).required('O campo EAN 2 é obrigatório!'),
-      fabricante: object({
-        codigo: number().min(1, 'Por favor, selecione uma opção de fabricante').nullable(),
-        apresentacao: object({
+      empresa: object({
+        codigo: number().min(1, 'Por favor, selecione uma opção de empresa').nullable(),
+        responsavel: object({
           codigo: number().min(1, 'Por favor, selecione uma opção de apresentação').nullable(),
-          marca: object({
-            codigo: number().min(1, 'Por favor, selecione uma opção de marca').nullable(),
-            subcategoria: object({
-              codigo: number().min(1, 'Por favor, selecione uma opção de subcategoria').nullable(),
-              categoria: object({
-                codigo: number().min(1, 'Por favor, selecione uma opção de categoria').nullable(),
-                secao: object({
-                  codigo: number().min(1, 'Por favor, selecione uma opção de seção').nullable(),
-                  departamento: object({
-                    codigo: number().min(1, 'Por favor, selecione uma opção de departamento').nullable(),
-                    unidade: object({
-                      codigo: number().min(1, 'Por favor, selecione uma opção de unidade').nullable(),
-                    }),
+          supervisor: object({
+            codigo: number().min(1, 'Por favor, selecione uma opção de supervisor').nullable(),
+            grupofilial: object({
+              codigo: number().min(1, 'Por favor, selecione uma opção de grupo filial').nullable(),
+              grupointerno: object({
+                codigo: number().min(1, 'Por favor, selecione uma opção de grupo interno').nullable(),
+                grupoexterno: object({
+                  codigo: number().min(1, 'Por favor, selecione uma opção de grupo externo').nullable(),
+                  tipofilial: object({
+                    codigo: number().min(1, 'Por favor, selecione uma opção de tipo filial').nullable(),
                   }),
                 }),
               }),
@@ -110,16 +98,13 @@ const CadastroProdutos = (props) => {
 
   const inputCodigo = useRef(null)
   const inputDescricao = useRef(null)
-  const inputEan1 = useRef(null)
-  const inputEan2 = useRef(null)
-  const inputFabricante = useRef(null)
-  const inputApresentacao = useRef(null)
-  const inputMarca = useRef(null)
-  const inputSubcategoria = useRef(null)
-  const inputCategoria = useRef(null)
-  const inputSecao = useRef(null)
-  const inputDepartamento = useRef(null)
-  const inputUnidade = useRef(null)
+  const inputEmpresa = useRef(null)
+  const inputResponsavel = useRef(null)
+  const inputSupervisor = useRef(null)
+  const inputGrupoFilial = useRef(null)
+  const inputGrupoInterno = useRef(null)
+  const inputGrupoExterno = useRef(null)
+  const inputTipoFilial = useRef(null)
 
   useEffect(() => {
     if (!isAddMode) {
@@ -129,49 +114,41 @@ const CadastroProdutos = (props) => {
         descricao: 'edit',
         registro: '',
         usuario: '',
-        ean1: '',
-        ean2: '',
-        fabricante: {
+        empresa: {
           codigo: 0,
-          descricao: 'Descrição Fabricante 85',
+          descricao: 'Descrição Empresa 85',
           registro: '',
           usuario: '',
-          apresentacao: {
+          responsavel: {
             codigo: 0,
-            descricao: 'Descrição Apresentação 75',
+            descricao: 'Descrição responsável 75',
             registro: '',
             usuario: '',
-            marca: {
+            supervisor: {
               codigo: 0,
-              descricao: 'Descrição Marca 65',
+              descricao: 'Descrição supervisor 65',
               registro: '',
               usuario: '',
-              subcategoria: {
+              grupofilial: {
                 codigo: 0,
-                descricao: 'Descrição Subcategoria 55',
+                descricao: 'Descrição grupo filial 55',
                 registro: '',
                 usuario: '',
-                categoria: {
+                grupointerno: {
                   codigo: 0,
-                  descricao: 'Descrição Categoria 45',
+                  descricao: 'Descrição grupo interno 45',
                   registro: '',
                   usuario: '',
-                  secao: {
+                  grupoexterno: {
                     codigo: 0,
-                    descricao: 'Descrição Seção 35',
+                    descricao: 'Descrição grupo externo 35',
                     registro: '',
                     usuario: '',
-                    departamento: {
+                    tipofilial: {
                       codigo: 25,
-                      descricao: 'Descrição Departamento 25',
+                      descricao: 'Descrição tipo filial 25',
                       registro: '',
                       usuario: '',
-                      unidade: {
-                        codigo: 15,
-                        descricao: 'Descrição Unidade 15',
-                        registro: '',
-                        usuario: '',
-                      },
                     },
                   },
                 },
@@ -182,22 +159,19 @@ const CadastroProdutos = (props) => {
       }
       setFieldValue('codigo', dataSecao.codigo, false)
       setFieldValue('descricao', dataSecao.descricao, false)
-      setFieldValue('ean1', dataSecao.ean1, false)
-      setFieldValue('ean2', dataSecao.ean2, false)
-      setFieldValue('fabricante', dataSecao.fabricante.codigo, false)
-      setFieldValue('apresentacao', dataSecao.fabricante.apresentacao.codigo, false)
-      setFieldValue('marca', dataSecao.fabricante.apresentacao.marca.codigo, false)
-      setFieldValue('subcategoria', dataSecao.fabricante.apresentacao.marca.subcategoria.codigo, false)
-      setFieldValue('categoria', dataSecao.fabricante.apresentacao.marca.subcategoria.categoria.codigo, false)
-      setFieldValue('secao', dataSecao.fabricante.apresentacao.marca.subcategoria.categoria.secao.codigo, false)
+      setFieldValue('empresa', dataSecao.empresa.codigo, false)
+      setFieldValue('responsavel', dataSecao.empresa.responsavel.codigo, false)
+      setFieldValue('supervisor', dataSecao.empresa.responsavel.supervisor.codigo, false)
+      setFieldValue('grupofilial', dataSecao.empresa.responsavel.supervisor.grupofilial.codigo, false)
+      setFieldValue('grupointerno', dataSecao.empresa.responsavel.supervisor.grupofilial.grupointerno.codigo, false)
       setFieldValue(
-        'departamento',
-        dataSecao.fabricante.apresentacao.marca.subcategoria.categoria.secao.departamento.codigo,
+        'grupoexterno',
+        dataSecao.empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.codigo,
         false
       )
       setFieldValue(
-        'unidade',
-        dataSecao.fabricante.apresentacao.marca.subcategoria.categoria.secao.departamento.unidade.codigo,
+        'tipofilial',
+        dataSecao.empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.tipofilial.codigo,
         false
       )
       setInitialValues(dataSecao)
@@ -209,294 +183,276 @@ const CadastroProdutos = (props) => {
   }, [id, isAddMode, setFieldValue])
 
   return (
-    <div className="col-md-12 grid-margin stretch-card">
-      <div className="card">
-        <div className="card-body">
-          <h3 className="">Produto</h3>
-          <p className="card-description"> Cadastro de Produto </p>
-          <form onSubmit={handleSubmit} className="forms-sample">
-            <Form.Group className="row">
-              <label htmlFor="codigo" className="col-sm-2 col-form-label">
-                Código:
-              </label>
-              <div className="col-sm-1">
-                <Form.Control
-                  type="number"
-                  className="form-control"
-                  id="codigo"
-                  placeholder="0"
-                  aria-label="código readonly input"
-                  readOnly
-                  ref={inputCodigo}
-                  {...getFieldProps('codigo')}
-                />
-              </div>
-            </Form.Group>
+    <div>
+      <div className="page-header">
+        <h3 className="page-title"> Filial </h3>
+      </div>
+      <nav aria-label="breadcrumb">
+        <p className="breadcrumb-item active"> Cadastro de Filial</p>
+      </nav>
+      <div className="col-md-12 grid-margin stretch-card">
+        <div className="card">
+          <div className="card-body">
+            <form onSubmit={handleSubmit} className="forms-sample">
+              <Form.Group className="row">
+                <label htmlFor="codigo" className="col-sm-2 col-form-label">
+                  Código:
+                </label>
+                <div className="col-sm-1">
+                  <Form.Control
+                    type="number"
+                    className="form-control"
+                    id="codigo"
+                    placeholder="0"
+                    aria-label="código readonly input"
+                    readOnly
+                    ref={inputCodigo}
+                    {...getFieldProps('codigo')}
+                  />
+                </div>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="descricao" className="col-sm-2 col-form-label">
+                  Descrição:
+                </label>
+                <div className="col-sm-10">
+                  <Form.Control
+                    type="text"
+                    className="form-control"
+                    id="descricao"
+                    aria-label="descrição input"
+                    placeholder="Descrição do produto"
+                    ref={inputDescricao}
+                    {...getFieldProps('descricao')}
+                  />
+                  <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
+                </div>
+              </Form.Group>
 
-            <Form.Group className="row">
-              <label htmlFor="descricao" className="col-sm-2 col-form-label">
-                Descrição:
-              </label>
-              <div className="col-sm-10">
-                <Form.Control
-                  type="text"
-                  className="form-control"
-                  id="descricao"
-                  aria-label="descrição input"
-                  placeholder="Descrição do produto"
-                  ref={inputDescricao}
-                  {...getFieldProps('descricao')}
-                />
-                <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
-              </div>
-            </Form.Group>
-
-            <Form.Group className="row">
-              <label htmlFor="ean1" className="col-sm-2 col-form-label">
-                EAN 1:
-              </label>
-              <div className="col-sm-10">
-                <Form.Control
-                  type="text"
-                  className="form-control"
-                  id="ean1"
-                  aria-label="descrição input"
-                  placeholder="Descrição do ean 1"
-                  ref={inputEan1}
-                  {...getFieldProps('ean1')}
-                />
-                <div>{errors.ean1 ? <small>{errors.ean1}</small> : null}</div>
-              </div>
-            </Form.Group>
-
-            <Form.Group className="row">
-              <label htmlFor="ean2" className="col-sm-2 col-form-label">
-                EAN 2:
-              </label>
-              <div className="col-sm-10">
-                <Form.Control
-                  type="text"
-                  className="form-control"
-                  id="ean2"
-                  aria-label="descrição input"
-                  placeholder="Descrição do ean 2"
-                  ref={inputEan2}
-                  {...getFieldProps('ean2')}
-                />
-                <div>{errors.ean2 ? <small>{errors.ean2}</small> : null}</div>
-              </div>
-            </Form.Group>
-
-            <Form.Group className="row">
-              <label htmlFor="fabricante" className="col-sm-2 col-form-label">
-                Fabricante:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="fabricante"
-                  ref={inputFabricante}
-                  {...getFieldProps('fabricante.codigo')}
-                >
-                  <option defaultValue={0}>Selecione um Fabricante</option>
-                  <option value={25}>Fabricante: 1</option>
-                  <option value={26}>Fabricante: 2</option>
-                  <option value={27}>Fabricante: 3</option>
-                  <option value={28}>Fabricante: 4</option>
-                </select>
-                <div>{errors.fabricante?.codigo ? <small>{errors.fabricante?.codigo}</small> : null}</div>
-              </div>
-            </Form.Group>
-
-            <Form.Group className="row">
-              <label htmlFor="apresentacao" className="col-sm-2 col-form-label">
-                Apresentação:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="apresentacao"
-                  ref={inputApresentacao}
-                  {...getFieldProps('fabricante.apresentacao.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Apresentação</option>
-                  <option value={21}>Apresentação: 1</option>
-                  <option value={22}>Apresentação: 2</option>
-                  <option value={23}>Apresentação: 3</option>
-                  <option value={24}>Apresentação: 4</option>
-                </select>
-                <div>
-                  {errors.fabricante?.apresentacao?.codigo ? (
-                    <small>{errors.fabricante?.apresentacao?.codigo}</small>
-                  ) : null}
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="empresa" className="col-sm-4 col-form-label">
+                      Empresa:
+                    </label>
+                    <div className="col-sm-8">
+                      <select
+                        className="form-control form-control-sm"
+                        id="empresa"
+                        ref={inputEmpresa}
+                        {...getFieldProps('empresa.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione um Empresa</option>
+                        <option value={25}>Empresa: 1</option>
+                        <option value={26}>Empresa: 2</option>
+                        <option value={27}>Empresa: 3</option>
+                        <option value={28}>Empresa: 4</option>
+                      </select>
+                      <div>{errors.empresa?.codigo ? <small>{errors.empresa?.codigo}</small> : null}</div>
+                    </div>
+                  </Form.Group>
+                </div>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="responsavel" className="col-sm-3 col-form-label">
+                      Responsável:
+                    </label>
+                    <div className="col-sm-9">
+                      <select
+                        className="form-control form-control-sm"
+                        id="responsavel"
+                        ref={inputResponsavel}
+                        {...getFieldProps('empresa.responsavel.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione um Responsável</option>
+                        <option value={21}>Responsável: 1</option>
+                        <option value={22}>Responsável: 2</option>
+                        <option value={23}>Responsável: 3</option>
+                        <option value={24}>Responsável: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.codigo ? (
+                          <small>{errors.empresa?.responsavel?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
               </div>
-            </Form.Group>
 
-            <Form.Group className="row">
-              <label htmlFor="marca" className="col-sm-2 col-form-label">
-                Marca:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="marca"
-                  ref={inputMarca}
-                  {...getFieldProps('fabricante.apresentacao.marca.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Marca</option>
-                  <option value={17}>Marca: 1</option>
-                  <option value={18}>Marca: 2</option>
-                  <option value={19}>Marca: 3</option>
-                  <option value={20}>Marca: 4</option>
-                </select>
-                <div>
-                  {errors.fabricante?.apresentacao?.marca?.codigo ? (
-                    <small>{errors.fabricante?.apresentacao?.marca?.codigo}</small>
-                  ) : null}
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="supervisor" className="col-sm-2 col-form-label">
+                      Supervisor:
+                    </label>
+                    <div className="col-sm-10">
+                      <select
+                        className="form-control form-control-sm"
+                        id="supervisor"
+                        ref={inputSupervisor}
+                        {...getFieldProps('empresa.responsavel.supervisor.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione uma Supervisor</option>
+                        <option value={17}>Supervisor: 1</option>
+                        <option value={18}>Supervisor: 2</option>
+                        <option value={19}>Supervisor: 3</option>
+                        <option value={20}>Supervisor: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.codigo ? (
+                          <small>{errors.empresa?.responsavel?.supervisor?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
+                </div>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="fundacao" className="col-sm-3 col-form-label">
+                      Abertura em:
+                    </label>
+                    <div className="col-sm-9">
+                      <Datepicker />
+                    </div>
+                  </Form.Group>
                 </div>
               </div>
-            </Form.Group>
 
-            <Form.Group className="row">
-              <label htmlFor="subcategoria" className="col-sm-2 col-form-label">
-                Subcategoria:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="subcategoria"
-                  ref={inputSubcategoria}
-                  {...getFieldProps('fabricante.apresentacao.marca.subcategoria.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Subcategoria</option>
-                  <option value={13}>Subcategoria: 1</option>
-                  <option value={14}>Subcategoria: 2</option>
-                  <option value={15}>Subcategoria: 3</option>
-                  <option value={16}>Subcategoria: 4</option>
-                </select>
-                <div>
-                  {errors.fabricante?.apresentacao?.marca?.subcategoria?.codigo ? (
-                    <small>{errors.fabricante?.apresentacao?.marca?.subcategoria?.codigo}</small>
-                  ) : null}
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="grupoexterno" className="col-sm-4 col-form-label">
+                      Grupo Externo:
+                    </label>
+                    <div className="col-sm-8">
+                      <select
+                        className="form-control form-control-sm"
+                        id="grupoexterno"
+                        ref={inputGrupoExterno}
+                        {...getFieldProps(
+                          'empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.codigo'
+                        )}
+                      >
+                        <option defaultValue={0}>Selecione um Grupo Externo</option>
+                        <option value={5}>Grupo Externo: 1</option>
+                        <option value={6}>Grupo Externo: 2</option>
+                        <option value={7}>Grupo Externo: 3</option>
+                        <option value={8}>Grupo Externo: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.codigo ? (
+                          <small>
+                            {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.codigo}
+                          </small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
+                </div>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="grupointerno" className="col-sm-3 col-form-label">
+                      Grupo Interno:
+                    </label>
+                    <div className="col-sm-9">
+                      <select
+                        className="form-control form-control-sm"
+                        id="grupointerno"
+                        ref={inputGrupoInterno}
+                        {...getFieldProps('empresa.responsavel.supervisor.grupofilial.grupointerno.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione uma Grupo Interno</option>
+                        <option value={9}>Grupo Interno: 1</option>
+                        <option value={10}>Grupo Interno: 2</option>
+                        <option value={11}>Grupo Interno: 3</option>
+                        <option value={12}>Grupo Interno: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.codigo ? (
+                          <small>{errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
               </div>
-            </Form.Group>
 
-            <Form.Group className="row">
-              <label htmlFor="categoria" className="col-sm-2 col-form-label">
-                Categoria:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="categoria"
-                  ref={inputCategoria}
-                  {...getFieldProps('fabricante.apresentacao.marca.subcategoria.categoria.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Categoria</option>
-                  <option value={9}>Categoria: 1</option>
-                  <option value={10}>Categoria: 2</option>
-                  <option value={11}>Categoria: 3</option>
-                  <option value={12}>Categoria: 4</option>
-                </select>
-                <div>
-                  {errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.codigo ? (
-                    <small>{errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.codigo}</small>
-                  ) : null}
+              <Form.Group className="row">
+                <label htmlFor="grupofilial" className="col-sm-2 col-form-label">
+                  grupofilial:
+                </label>
+                <div className="col-sm-10">
+                  <select
+                    className="form-control form-control-sm"
+                    id="grupofilial"
+                    ref={inputGrupoFilial}
+                    {...getFieldProps('empresa.responsavel.supervisor.grupofilial.codigo')}
+                  >
+                    <option defaultValue={0}>Selecione uma Grupo Filial</option>
+                    <option value={13}>Grupo Filial: 1</option>
+                    <option value={14}>Grupo Filial: 2</option>
+                    <option value={15}>Grupo Filial: 3</option>
+                    <option value={16}>Grupo Filial: 4</option>
+                  </select>
+                  <div>
+                    {errors.empresa?.responsavel?.supervisor?.grupofilial?.codigo ? (
+                      <small>{errors.empresa?.responsavel?.supervisor?.grupofilial?.codigo}</small>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-            </Form.Group>
+              </Form.Group>
 
-            <Form.Group className="row">
-              <label htmlFor="secao" className="col-sm-2 col-form-label">
-                Seção:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="secao"
-                  ref={inputSecao}
-                  {...getFieldProps('fabricante.apresentacao.marca.subcategoria.categoria.secao.codigo')}
-                >
-                  <option defaultValue={0}>Selecione uma Seção</option>
-                  <option value={5}>Seção: 1</option>
-                  <option value={6}>Seção: 2</option>
-                  <option value={7}>Seção: 3</option>
-                  <option value={8}>Seção: 4</option>
-                </select>
-                <div>
-                  {errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.secao?.codigo ? (
-                    <small>{errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.secao?.codigo}</small>
-                  ) : null}
+              <Form.Group className="row">
+                <label htmlFor="tipofilial" className="col-sm-2 col-form-label">
+                  Tipo Filial:
+                </label>
+                <div className="col-sm-10">
+                  <select
+                    className="form-control form-control-sm"
+                    id="tipofilial"
+                    ref={inputTipoFilial}
+                    {...getFieldProps(
+                      'empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.tipofilial.codigo'
+                    )}
+                  >
+                    <option defaultValue={0}>Selecione um Tipo Filial</option>
+                    <option value={1}>Tipo Filial: 1</option>
+                    <option value={2}>Tipo Filial: 2</option>
+                    <option value={3}>Tipo Filial: 3</option>
+                    <option value={4}>Tipo Filial: 4</option>
+                  </select>
+                  <div>
+                    {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.tipofilial
+                      ?.codigo ? (
+                      <small>
+                        {
+                          errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.tipofilial
+                            ?.codigo
+                        }
+                      </small>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-            </Form.Group>
-
-            <Form.Group className="row">
-              <label htmlFor="departamento" className="col-sm-2 col-form-label">
-                Departamento:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="departamento"
-                  ref={inputDepartamento}
-                  {...getFieldProps('fabricante.apresentacao.marca.subcategoria.categoria.secao.departamento.codigo')}
-                >
-                  <option defaultValue={0}>Selecione um departamento</option>
-                  <option value={1}>Departamento: 1</option>
-                  <option value={2}>Departamento: 2</option>
-                  <option value={3}>Departamento: 3</option>
-                  <option value={4}>Departamento: 4</option>
-                </select>
-                <div>
-                  {errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.secao?.departamento?.codigo ? (
-                    <small>
-                      {errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.secao?.departamento?.codigo}
-                    </small>
-                  ) : null}
-                </div>
-              </div>
-            </Form.Group>
-
-            <Form.Group className="row">
-              <label htmlFor="departamento" className="col-sm-2 col-form-label">
-                Unidade:
-              </label>
-              <div className="col-sm-10">
-                <select
-                  className="form-control form-control-sm"
-                  id="unidade"
-                  ref={inputUnidade}
-                  {...getFieldProps(
-                    'fabricante.apresentacao.marca.subcategoria.categoria.secao.departamento.unidade.codigo'
-                  )}
-                >
-                  <option defaultValue={0}>Selecione uma unidade</option>
-                  <option value={1}>Unidade: 1</option>
-                  <option value={2}>Unidade: 2</option>
-                  <option value={3}>Unidade: 3</option>
-                  <option value={4}>Unidade: 4</option>
-                </select>
-                <div>
-                  {errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.secao?.departamento?.unidade
-                    ?.codigo ? (
-                    <small>
-                      {
-                        errors.fabricante?.apresentacao?.marca?.subcategoria?.categoria?.secao?.departamento?.unidade
-                          ?.codigo
-                      }
-                    </small>
-                  ) : null}
-                </div>
-              </div>
-            </Form.Group>
-
-            <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-              Salvar
-            </button>
-          </form>
+              </Form.Group>
+              <Form.Group className="row">
+                <label htmlFor="observacao" className="col-sm-2 col-form-label">
+                  Observação:
+                </label>
+                <textarea className="form-control col-sm-10" id="observacao" rows="4"></textarea>
+              </Form.Group>
+              <Form.Group className="form-check">
+                <label className="form-check-label text-muted ">
+                  <input type="checkbox" className="form-check-input" />
+                  <i className="input-helper"></i>
+                  Ativo?
+                </label>
+              </Form.Group>
+              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
+                Salvar
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -504,3 +460,8 @@ const CadastroProdutos = (props) => {
 }
 
 export default CadastroProdutos
+
+// <div className="row">
+//  <div className="col-md-6"></div>
+//  <div className="col-md-6"></div>
+// </div>

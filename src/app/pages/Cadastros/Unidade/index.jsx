@@ -4,7 +4,7 @@ import * as queries from '../../../../api/queries'
 import { Link } from 'react-router-dom'
 
 import { Form, Button } from 'react-bootstrap'
-import { MdEdit, MdRemoveCircleOutline } from 'react-icons/md'
+import { MdEdit, MdRemoveCircleOutline, MdAdd, MdSearch } from 'react-icons/md'
 import { FaRegClone } from 'react-icons/fa'
 
 const Unidades = () => {
@@ -21,16 +21,19 @@ const Unidades = () => {
   }
   return (
     <div>
-      <div className="page-header">
-        <h3 className=""> Unidade </h3>
+     <Form.Group className="page-header">
+        <h4 className="page-title">Unidade</h4>
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
-            <a href="/cadastros/unidade" className="btn btn-primary btn-lg">
-              Cadastrar
-            </a>
+            <Link to="/cadastros/unidade">
+              <Button variant="default-dark">
+                <MdAdd style={{ fontSize: '24px' }} />
+                Adicionar Unidade
+              </Button>
+            </Link>
           </ol>
         </nav>
-      </div>
+      </Form.Group>
       <div className="row">
         <div className="col-lg-12 grid-margin stretch-card">
           <div className="card">
@@ -47,9 +50,15 @@ const Unidades = () => {
                     onChange={(e) => setTerm(e.target.value)}
                   />
                   <div className="input-group-append">
-                    <button className="btn btn-sm btn-primary" type="button">
+                    <Button
+                      variant="outline-dark"
+                      onClick={(evt) => {
+                        evt.preventDefault()
+                      }}
+                    >
+                      <MdSearch style={{ fontSize: '24px' }} />
                       Pesquisar
-                    </button>
+                    </Button>
                   </div>
                 </div>
               </Form.Group>
@@ -71,17 +80,17 @@ const Unidades = () => {
                       <tr key={item.codigo}>
                         <td>{item.codigo}</td>
                         <td>{item.descricao}</td>
-                        <td>{item.registro}</td>
                         <td>{item.usuario}</td>
+                        <td>{item.registro}</td>
                         <td>
-                          <Link to={`/cadastros/${item.codigo}/unidade`}>
+                          <Link to={`/cadastros/unidade/edit/${item.codigo}`}>
                             <Button className="btn btn-warning btn-rounded">
                               <MdEdit />
                             </Button>
                           </Link>
                         </td>
                         <td>
-                          <Link to={`/cadastros/${item.codigo}/unidade`}>
+                          <Link to={`/cadastros/unidade/clone/${item.codigo}`}>
                             <Button className="btn btn-success btn-rounded">
                               <FaRegClone />
                             </Button>

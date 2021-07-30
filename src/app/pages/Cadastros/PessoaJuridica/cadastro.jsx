@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import { object, string, number } from 'yup'
-import { Form } from 'react-bootstrap'
+import { Form, ButtonGroup, Button } from 'react-bootstrap'
+import { IoSaveOutline } from 'react-icons/io5'
+import { FcCancel } from 'react-icons/fc'
 import Datepicker from '../../../../assets/styles/components/datepicker'
 
-const CadastroProdutos = (props) => {
+const CadastroPessoaJuridica = (props) => {
   const { id } = props.match.params
   const isAddMode = !id
 
@@ -145,134 +147,131 @@ const CadastroProdutos = (props) => {
                 </div>
               </Form.Group>
 
-              <Form.Group className="row">
-                <label htmlFor="descricao" className="col-sm-2 col-form-label">
-                  Descrição:
-                </label>
-                <div className="col-sm-10">
-                  <Form.Control
-                    type="text"
-                    className="form-control"
-                    id="descricao"
-                    aria-label="descrição input"
-                    placeholder="Descrição do produto"
-                    ref={inputDescricao}
-                    {...getFieldProps('descricao')}
-                  />
-                  <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="fantasia" className="col-sm-4 col-form-label">
+                      Fantasia:
+                    </label>
+                    <div className="col-sm-8">
+                      <Form.Control
+                        type="text"
+                        className="form-control"
+                        id="fantasia"
+                        aria-label="descrição input"
+                        placeholder="Insira o nome fantasia"
+                        ref={inputFantasia}
+                        {...getFieldProps('fantasia')}
+                      />
+                      <div>{errors.fantasia ? <small>{errors.fantasia}</small> : null}</div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="razaoSocial" className="col-sm-3 col-form-label">
+                      Razão Social:
+                    </label>
+                    <div className="col-sm-9">
+                      <Form.Control
+                        type="text"
+                        className="form-control"
+                        id="razaoSocial"
+                        aria-label="descrição input"
+                        placeholder="Descrição da razão social"
+                        ref={inputRazaoSocial}
+                        {...getFieldProps('razaoSocial')}
+                      />
+                      <div>{errors.razaoSocial ? <small>{errors.razaoSocial}</small> : null}</div>
+                    </div>
+                  </Form.Group>
+                </div>
+              </div>
 
-              <Form.Group className="row">
-                <label htmlFor="fantasia" className="col-sm-2 col-form-label">
-                  Fantasia:
-                </label>
-                <div className="col-sm-10">
-                  <Form.Control
-                    type="text"
-                    className="form-control"
-                    id="fantasia"
-                    aria-label="descrição input"
-                    placeholder="Descrição da razão social"
-                    ref={inputFantasia}
-                    {...getFieldProps('fantasia')}
-                  />
-                  <div>{errors.fantasia ? <small>{errors.fantasia}</small> : null}</div>
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="ramoAtividade" className="col-sm-4 col-form-label">
+                      Ramo Atividade:
+                    </label>
+                    <div className="col-sm-8">
+                      <select
+                        className="form-control form-control-sm"
+                        id="ramoAtividade"
+                        ref={inputRamoAtividade}
+                        {...getFieldProps('fabricante.ramoAtividade.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione um Ramo Atividade</option>
+                        <option value={21}>Ramo Atividade: 1</option>
+                        <option value={22}>Ramo Atividade: 2</option>
+                        <option value={23}>Ramo Atividade: 3</option>
+                        <option value={24}>Ramo Atividade: 4</option>
+                      </select>
+                      <div>
+                        {errors.atividadeComercial?.ramoAtividade?.codigo ? (
+                          <small>{errors.atividadeComercial?.ramoAtividade?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="atividadeComercial" className="col-sm-3 col-form-label">
+                      Atividade Comercial:
+                    </label>
+                    <div className="col-sm-9">
+                      <select
+                        className="form-control form-control-sm"
+                        id="atividadeComercial"
+                        ref={inputAtividadeComercial}
+                        {...getFieldProps('atividadeComercial.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione uma Atividade Comercial</option>
+                        <option value={25}>Atividade Comercial: 1</option>
+                        <option value={26}>Atividade Comercial: 2</option>
+                        <option value={27}>Atividade Comercial: 3</option>
+                        <option value={28}>Atividade Comercial: 4</option>
+                      </select>
+                      <div>
+                        {errors.atividadeComercial?.codigo ? <small>{errors.atividadeComercial?.codigo}</small> : null}
+                      </div>
+                    </div>
+                  </Form.Group>
+                </div>
+              </div>
 
-              <Form.Group className="row">
-                <label htmlFor="razaoSocial" className="col-sm-2 col-form-label">
-                  Razão Social:
-                </label>
-                <div className="col-sm-10">
-                  <Form.Control
-                    type="text"
-                    className="form-control"
-                    id="razaoSocial"
-                    aria-label="descrição input"
-                    placeholder="Descrição da razão social"
-                    ref={inputRazaoSocial}
-                    {...getFieldProps('razaoSocial')}
-                  />
-                  <div>{errors.razaoSocial ? <small>{errors.razaoSocial}</small> : null}</div>
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="cnpj" className="col-sm-4 col-form-label">
+                      CNPJ:
+                    </label>
+                    <div className="col-sm-8">
+                      <Form.Control
+                        type="text"
+                        className="form-control"
+                        id="cnpj"
+                        aria-label="descrição input"
+                        placeholder="Insira o cnpj"
+                        ref={inputCnpj}
+                        {...getFieldProps('cnpj')}
+                      />
+                      <div>{errors.cnpj ? <small>{errors.cnpj}</small> : null}</div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-
-              <Form.Group className="row">
-                <label htmlFor="cnpj" className="col-sm-2 col-form-label">
-                  CNPJ:
-                </label>
-                <div className="col-sm-10">
-                  <Form.Control
-                    type="text"
-                    className="form-control"
-                    id="cnpj"
-                    aria-label="descrição input"
-                    placeholder="Insira o cnpj"
-                    ref={inputCnpj}
-                    {...getFieldProps('cnpj')}
-                  />
-                  <div>{errors.cnpj ? <small>{errors.cnpj}</small> : null}</div>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="fundacao" className="col-sm-3 col-form-label">
+                      Fundação:
+                    </label>
+                    <div className="col-sm-9">
+                      <Datepicker />
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-
-              <Form.Group className="row">
-                <label htmlFor="atividadeComercial" className="col-sm-2 col-form-label">
-                  Atividade Comercial:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="atividadeComercial"
-                    ref={inputAtividadeComercial}
-                    {...getFieldProps('atividadeComercial.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione uma Atividade Comercial</option>
-                    <option value={25}>Atividade Comercial: 1</option>
-                    <option value={26}>Atividade Comercial: 2</option>
-                    <option value={27}>Atividade Comercial: 3</option>
-                    <option value={28}>Atividade Comercial: 4</option>
-                  </select>
-                  <div>
-                    {errors.atividadeComercial?.codigo ? <small>{errors.atividadeComercial?.codigo}</small> : null}
-                  </div>
-                </div>
-              </Form.Group>
-
-              <Form.Group className="row">
-                <label htmlFor="ramoAtividade" className="col-sm-2 col-form-label">
-                  Ramo Atividade:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="ramoAtividade"
-                    ref={inputRamoAtividade}
-                    {...getFieldProps('fabricante.ramoAtividade.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione um Ramo Atividade</option>
-                    <option value={21}>Ramo Atividade: 1</option>
-                    <option value={22}>Ramo Atividade: 2</option>
-                    <option value={23}>Ramo Atividade: 3</option>
-                    <option value={24}>Ramo Atividade: 4</option>
-                  </select>
-                  <div>
-                    {errors.atividadeComercial?.ramoAtividade?.codigo ? (
-                      <small>{errors.atividadeComercial?.ramoAtividade?.codigo}</small>
-                    ) : null}
-                  </div>
-                </div>
-              </Form.Group>
-
-              <Form.Group className="row">
-                <label htmlFor="fundacao" className="col-sm-2 col-form-label">
-                  Fundação:
-                </label>
-                <div className="col-sm-10">
-                  <Datepicker />
-                </div>
-              </Form.Group>
+              </div>
 
               <Form.Group className="form-check">
                 <label className="form-check-label text-muted">
@@ -290,9 +289,16 @@ const CadastroProdutos = (props) => {
                 </label>
               </Form.Group>
 
-              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-                Salvar
-              </button>
+              <Form.Group className="row" style={{ float: 'right' }}>
+                <ButtonGroup className="mr-2">
+                  <Button type="button" className="btn btn-light btn-default btn-sm">
+                    <FcCancel fontSize="20px" /> CANCELAR
+                  </Button>
+                </ButtonGroup>
+                <Button type="submit" className="btn btn-success btn-md">
+                  <IoSaveOutline fontSize="20px" /> SALVAR
+                </Button>
+              </Form.Group>
             </form>
           </div>
         </div>
@@ -301,4 +307,4 @@ const CadastroProdutos = (props) => {
   )
 }
 
-export default CadastroProdutos
+export default CadastroPessoaJuridica

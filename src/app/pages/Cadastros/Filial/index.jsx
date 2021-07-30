@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useFormik } from 'formik'
 import { object, string, number } from 'yup'
-import { Form } from 'react-bootstrap'
 import Datepicker from '../../../../assets/styles/components/datepicker'
+import { Form, ButtonGroup, Button } from 'react-bootstrap'
+import { IoSaveOutline } from 'react-icons/io5'
+import { FcCancel } from 'react-icons/fc'
 
 const CadastroProdutos = (props) => {
   const { id } = props.match.params
@@ -228,202 +230,249 @@ const CadastroProdutos = (props) => {
                   <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
                 </div>
               </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="empresa" className="col-sm-2 col-form-label">
-                  Empresa:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="empresa"
-                    ref={inputEmpresa}
-                    {...getFieldProps('empresa.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione um Empresa</option>
-                    <option value={25}>Empresa: 1</option>
-                    <option value={26}>Empresa: 2</option>
-                    <option value={27}>Empresa: 3</option>
-                    <option value={28}>Empresa: 4</option>
-                  </select>
-                  <div>{errors.empresa?.codigo ? <small>{errors.empresa?.codigo}</small> : null}</div>
+
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="empresa" className="col-sm-4 col-form-label">
+                      Empresa:
+                    </label>
+                    <div className="col-sm-8">
+                      <select
+                        className="form-control form-control-sm"
+                        id="empresa"
+                        ref={inputEmpresa}
+                        {...getFieldProps('empresa.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione um Empresa</option>
+                        <option value={25}>Empresa: 1</option>
+                        <option value={26}>Empresa: 2</option>
+                        <option value={27}>Empresa: 3</option>
+                        <option value={28}>Empresa: 4</option>
+                      </select>
+                      <div>{errors.empresa?.codigo ? <small>{errors.empresa?.codigo}</small> : null}</div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="responsavel" className="col-sm-2 col-form-label">
-                  Responsável:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="responsavel"
-                    ref={inputResponsavel}
-                    {...getFieldProps('empresa.responsavel.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione um Responsável</option>
-                    <option value={21}>Responsável: 1</option>
-                    <option value={22}>Responsável: 2</option>
-                    <option value={23}>Responsável: 3</option>
-                    <option value={24}>Responsável: 4</option>
-                  </select>
-                  <div>
-                    {errors.empresa?.responsavel?.codigo ? <small>{errors.empresa?.responsavel?.codigo}</small> : null}
-                  </div>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="responsavel" className="col-sm-3 col-form-label">
+                      Responsável:
+                    </label>
+                    <div className="col-sm-9">
+                      <select
+                        className="form-control form-control-sm"
+                        id="responsavel"
+                        ref={inputResponsavel}
+                        {...getFieldProps('empresa.responsavel.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione um Responsável</option>
+                        <option value={21}>Responsável: 1</option>
+                        <option value={22}>Responsável: 2</option>
+                        <option value={23}>Responsável: 3</option>
+                        <option value={24}>Responsável: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.codigo ? (
+                          <small>{errors.empresa?.responsavel?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="supervisor" className="col-sm-2 col-form-label">
-                  Supervisor:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="supervisor"
-                    ref={inputSupervisor}
-                    {...getFieldProps('empresa.responsavel.supervisor.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione uma Supervisor</option>
-                    <option value={17}>Supervisor: 1</option>
-                    <option value={18}>Supervisor: 2</option>
-                    <option value={19}>Supervisor: 3</option>
-                    <option value={20}>Supervisor: 4</option>
-                  </select>
-                  <div>
-                    {errors.empresa?.responsavel?.supervisor?.codigo ? (
-                      <small>{errors.empresa?.responsavel?.supervisor?.codigo}</small>
-                    ) : null}
-                  </div>
+              </div>
+
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="supervisor" className="col-sm-4 col-form-label">
+                      Supervisor:
+                    </label>
+                    <div className="col-sm-8">
+                      <select
+                        className="form-control form-control-sm"
+                        id="supervisor"
+                        ref={inputSupervisor}
+                        {...getFieldProps('empresa.responsavel.supervisor.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione uma Supervisor</option>
+                        <option value={17}>Supervisor: 1</option>
+                        <option value={18}>Supervisor: 2</option>
+                        <option value={19}>Supervisor: 3</option>
+                        <option value={20}>Supervisor: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.codigo ? (
+                          <small>{errors.empresa?.responsavel?.supervisor?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="fundacao" className="col-sm-2 col-form-label">
-                  Abertura em:
-                </label>
-                <div className="col-sm-10">
-                  <Datepicker />
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="fundacao" className="col-sm-3 col-form-label">
+                      Abertura em:
+                    </label>
+                    <div className="col-sm-9">
+                      <Datepicker />
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="grupofilial" className="col-sm-2 col-form-label">
-                  grupofilial:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="grupofilial"
-                    ref={inputGrupoFilial}
-                    {...getFieldProps('empresa.responsavel.supervisor.grupofilial.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione uma Grupo Filial</option>
-                    <option value={13}>Grupo Filial: 1</option>
-                    <option value={14}>Grupo Filial: 2</option>
-                    <option value={15}>Grupo Filial: 3</option>
-                    <option value={16}>Grupo Filial: 4</option>
-                  </select>
-                  <div>
-                    {errors.empresa?.responsavel?.supervisor?.grupofilial?.codigo ? (
-                      <small>{errors.empresa?.responsavel?.supervisor?.grupofilial?.codigo}</small>
-                    ) : null}
-                  </div>
+              </div>
+
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="grupointerno" className="col-sm-4 col-form-label">
+                      Grupo Interno:
+                    </label>
+                    <div className="col-sm-8">
+                      <select
+                        className="form-control form-control-sm"
+                        id="grupointerno"
+                        ref={inputGrupoInterno}
+                        {...getFieldProps('empresa.responsavel.supervisor.grupofilial.grupointerno.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione um Grupo Interno</option>
+                        <option value={5}>Grupo Interno: 1</option>
+                        <option value={6}>Grupo Interno: 2</option>
+                        <option value={7}>Grupo Interno: 3</option>
+                        <option value={8}>Grupo Interno: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.codigo ? (
+                          <small>{errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="grupointerno" className="col-sm-2 col-form-label">
-                  Grupo Interno:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="grupointerno"
-                    ref={inputGrupoInterno}
-                    {...getFieldProps('empresa.responsavel.supervisor.grupofilial.grupointerno.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione uma Grupo Interno</option>
-                    <option value={9}>Grupo Interno: 1</option>
-                    <option value={10}>Grupo Interno: 2</option>
-                    <option value={11}>Grupo Interno: 3</option>
-                    <option value={12}>Grupo Interno: 4</option>
-                  </select>
-                  <div>
-                    {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.codigo ? (
-                      <small>{errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.codigo}</small>
-                    ) : null}
-                  </div>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="grupoexterno" className="col-sm-3 col-form-label">
+                      Grupo Externo:
+                    </label>
+                    <div className="col-sm-9">
+                      <select
+                        className="form-control form-control-sm"
+                        id="grupoexterno"
+                        ref={inputGrupoExterno}
+                        {...getFieldProps(
+                          'empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.codigo'
+                        )}
+                      >
+                        <option defaultValue={0}>Selecione um Grupo Externo</option>
+                        <option value={5}>Grupo Externo: 1</option>
+                        <option value={6}>Grupo Externo: 2</option>
+                        <option value={7}>Grupo Externo: 3</option>
+                        <option value={8}>Grupo Externo: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.codigo ? (
+                          <small>
+                            {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.codigo}
+                          </small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="grupoexterno" className="col-sm-2 col-form-label">
-                  Grupo Externo:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="grupoexterno"
-                    ref={inputGrupoExterno}
-                    {...getFieldProps('empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.codigo')}
-                  >
-                    <option defaultValue={0}>Selecione um Grupo Externo</option>
-                    <option value={5}>Grupo Externo: 1</option>
-                    <option value={6}>Grupo Externo: 2</option>
-                    <option value={7}>Grupo Externo: 3</option>
-                    <option value={8}>Grupo Externo: 4</option>
-                  </select>
-                  <div>
-                    {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.codigo ? (
-                      <small>
-                        {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.codigo}
-                      </small>
-                    ) : null}
-                  </div>
+              </div>
+
+              <div className="row">
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="grupofilial" className="col-sm-4 col-form-label">
+                      Grupo Filial:
+                    </label>
+                    <div className="col-sm-8">
+                      <select
+                        className="form-control form-control-sm"
+                        id="grupofilial"
+                        ref={inputGrupoFilial}
+                        {...getFieldProps('empresa.responsavel.supervisor.grupofilial.codigo')}
+                      >
+                        <option defaultValue={0}>Selecione uma Grupo Filial</option>
+                        <option value={13}>Grupo Filial: 1</option>
+                        <option value={14}>Grupo Filial: 2</option>
+                        <option value={15}>Grupo Filial: 3</option>
+                        <option value={16}>Grupo Filial: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.grupofilial?.codigo ? (
+                          <small>{errors.empresa?.responsavel?.supervisor?.grupofilial?.codigo}</small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
-              </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="tipofilial" className="col-sm-2 col-form-label">
-                  Tipo Filial:
-                </label>
-                <div className="col-sm-10">
-                  <select
-                    className="form-control form-control-sm"
-                    id="tipofilial"
-                    ref={inputTipoFilial}
-                    {...getFieldProps(
-                      'empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.tipofilial.codigo'
-                    )}
-                  >
-                    <option defaultValue={0}>Selecione um Tipo Filial</option>
-                    <option value={1}>Tipo Filial: 1</option>
-                    <option value={2}>Tipo Filial: 2</option>
-                    <option value={3}>Tipo Filial: 3</option>
-                    <option value={4}>Tipo Filial: 4</option>
-                  </select>
-                  <div>
-                    {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.tipofilial
-                      ?.codigo ? (
-                      <small>
-                        {
-                          errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.tipofilial
-                            ?.codigo
-                        }
-                      </small>
-                    ) : null}
-                  </div>
+                <div className="col-md-6">
+                  <Form.Group className="row">
+                    <label htmlFor="tipofilial" className="col-sm-3 col-form-label">
+                      Tipo Filial:
+                    </label>
+                    <div className="col-sm-9">
+                      <select
+                        className="form-control form-control-sm"
+                        id="tipofilial"
+                        ref={inputTipoFilial}
+                        {...getFieldProps(
+                          'empresa.responsavel.supervisor.grupofilial.grupointerno.grupoexterno.tipofilial.codigo'
+                        )}
+                      >
+                        <option defaultValue={0}>Selecione um Tipo Filial</option>
+                        <option value={1}>Tipo Filial: 1</option>
+                        <option value={2}>Tipo Filial: 2</option>
+                        <option value={3}>Tipo Filial: 3</option>
+                        <option value={4}>Tipo Filial: 4</option>
+                      </select>
+                      <div>
+                        {errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno?.tipofilial
+                          ?.codigo ? (
+                          <small>
+                            {
+                              errors.empresa?.responsavel?.supervisor?.grupofilial?.grupointerno?.grupoexterno
+                                ?.tipofilial?.codigo
+                            }
+                          </small>
+                        ) : null}
+                      </div>
+                    </div>
+                  </Form.Group>
                 </div>
+              </div>
+
+              <div className="row">
+                <div className="col-md-8">
+                  <Form.Group className="row">
+                    <label htmlFor="observacao" className="col-sm-3 col-form-label">
+                      Observação:
+                    </label>
+                    <textarea className="form-control col-sm-8" id="observacao" rows="3"></textarea>
+                  </Form.Group>
+                </div>
+                <div className="col-md-2">
+                  <Form.Group className="form-check">
+                    <label className="form-check-label text-muted ">
+                      <input type="checkbox" className="form-check-input" />
+                      <i className="input-helper"></i>
+                      Ativo?
+                    </label>
+                  </Form.Group>
+                </div>
+              </div>
+
+              <Form.Group className="row" style={{ float: 'right' }}>
+                <ButtonGroup className="mr-2">
+                  <Button type="button" className="btn btn-light btn-default btn-sm">
+                    <FcCancel fontSize="20px" /> CANCELAR
+                  </Button>
+                </ButtonGroup>
+                <Button type="submit" className="btn btn-success btn-md">
+                  <IoSaveOutline fontSize="20px" /> SALVAR
+                </Button>
               </Form.Group>
-              <Form.Group className="row">
-                <label htmlFor="observacao" className="col-sm-2 col-form-label">
-                  Observação:
-                </label>
-                <textarea className="form-control col-sm-10" id="observacao" rows="4"></textarea>
-              </Form.Group>
-              <Form.Group className="form-check">
-                <label className="form-check-label text-muted ">
-                  <input type="checkbox" className="form-check-input" />
-                  <i className="input-helper"></i>
-                  Ativo?
-                </label>
-              </Form.Group>
-              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-                Salvar
-              </button>
             </form>
           </div>
         </div>

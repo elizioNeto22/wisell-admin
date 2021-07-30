@@ -1,11 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Form } from 'react-bootstrap'
-import { object, string } from 'yup'
 import { useFormik, Formik } from 'formik'
+import { object, string, number, SchemaOf } from 'yup'
+import { Form, ButtonGroup, Button } from 'react-bootstrap'
+import { IoSaveOutline } from 'react-icons/io5'
+import { FcCancel } from 'react-icons/fc'
+import { useQuery } from 'react-apollo'
+import * as queries from '../../../../api/queries'
 
 const CadastroApresentacoes = (props) => {
   const { id } = props.match.params
   const isAddMode = !id
+  const { data } = useQuery(queries.APRESENTACOES)
 
   const [initialValues, setInitialValues] = useState({
     codigo: 0,
@@ -93,9 +98,16 @@ const CadastroApresentacoes = (props) => {
                   <div>{errors.descricao ? <small>{errors.descricao}</small> : null}</div>
                 </div>
               </Form.Group>
-              <button type="submit" className="btn btn-primary btn-lg" style={{ float: 'right' }}>
-                Salvar
-              </button>
+              <Form.Group className="row" style={{ float: 'right' }}>
+                <ButtonGroup className="mr-2">
+                  <Button type="button" className="btn btn-light btn-default btn-sm">
+                    <FcCancel fontSize="20px" /> CANCELAR
+                  </Button>
+                </ButtonGroup>
+                <Button type="submit" className="btn btn-success btn-md">
+                  <IoSaveOutline fontSize="20px" /> SALVAR
+                </Button>
+              </Form.Group>
             </form>
           </div>
         </div>

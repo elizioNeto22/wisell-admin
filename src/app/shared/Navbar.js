@@ -29,17 +29,17 @@ class Navbar extends Component {
           </button>
           <Dropdown dropdown-menu-center>
             <div className="template-demo row-cols-lg-3">
-              <button type="button" className="btn btn-primary">
-                Vender
+              <button type="button" className="btn btn-info">
+                Produtos
               </button>
-              <button type="button" className="btn btn-primary">
-                Recomendar
+              <button type="button" className="btn btn-info">
+                Clientes
               </button>
-              <button type="button" className="btn btn-primary">
-                Carteira
+              <button type="button" className="btn btn-info">
+                Parceiros Comerciais
               </button>
-              <button type="button" className="btn btn-primary">
-                Oportunidades
+              <button type="button" className="btn btn-info">
+                Painel de Controle
               </button>
             </div>
           </Dropdown>
